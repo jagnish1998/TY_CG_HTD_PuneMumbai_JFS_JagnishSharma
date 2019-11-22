@@ -1,0 +1,21 @@
+package com.capgemini.medicalhibernate.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+
+import com.capgemini.medicalhibernate.bean.MedicineBean;
+
+public class MedicineDAOImpli implements MedicineDAO {
+	EntityManagerFactory entityManagerFactory = null;
+	EntityManager entityManager = null;
+	EntityTransaction entityTransaction = null;
+
+	@Override
+	public List<MedicineBean> getMedicine() {
+
+	}
+
+}

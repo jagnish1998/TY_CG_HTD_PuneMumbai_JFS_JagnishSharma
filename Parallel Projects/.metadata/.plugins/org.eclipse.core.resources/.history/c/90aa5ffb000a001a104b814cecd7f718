@@ -1,0 +1,36 @@
+package com.capgemini.medicalhibernate.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+
+import com.capgemini.medicalhibernate.bean.MessageBean;
+
+public class MessageDAOImpli implements MessageDAO {
+	EntityManagerFactory entityManagerFactory = null;
+	EntityManager entityManager = null;
+	EntityTransaction entityTransaction = null;
+
+	@Override
+	public boolean sendMessage(String message, int uId, String type) {
+		return false;
+	}
+
+	@Override
+	public List<MessageBean> viewResponse(int uId) {
+		return null;
+	}
+
+	@Override
+	public List<MessageBean> viewMessage() {
+		return null;
+	}
+
+	@Override
+	public boolean sendResponse(String message, String type, int uId) {
+		return false;
+	}
+
+}

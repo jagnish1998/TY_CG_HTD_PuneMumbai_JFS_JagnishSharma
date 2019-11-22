@@ -1,0 +1,22 @@
+package com.capgemini.medicalcollection.controller;
+
+import java.util.Set;
+
+import com.capgemini.medicalcollection.bean.CartBean;
+import com.capgemini.medicalcollection.bean.UserBean;
+import com.capgemini.medicalcollection.dao.CartDAO;
+import com.capgemini.medicalcollection.dao.MedicineDAO;
+import com.capgemini.medicalcollection.factory.MedicineFactory;
+
+public class ViewCart {
+	public void showCart(UserBean bean) {
+		CartDAO cDao = MedicineFactory.getCartDAO();
+		MedicineDAO mDao = MedicineFactory.getMedicineDAO();
+		Set<CartBean> cartList = cDao.getCart(bean.getUserId());
+		if (cartList != null && !cartList.isEmpty()) {
+			for (CartBean cartBean : cartList) {
+				
+			}
+		}
+	}
+}

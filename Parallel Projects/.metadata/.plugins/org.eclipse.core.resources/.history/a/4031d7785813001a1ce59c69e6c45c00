@@ -1,0 +1,9 @@
+package com.capgemini.medicalcollection.controller;
+
+import com.capgemini.medicalcollection.bean.UserBean;
+
+public class AddToCart {
+	public void addTOCart(UserBean userBean) {
+		
+	}
+}

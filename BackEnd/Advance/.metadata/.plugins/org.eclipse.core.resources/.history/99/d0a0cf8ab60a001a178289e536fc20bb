@@ -1,0 +1,65 @@
+package com.capgemini.springmvc.controller;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.capgemini.springmvc.bean.EmployeeInfoBean;
+import com.capgemini.springmvc.service.EmployeeService;
+
+@Controller
+public class EmployeeController {
+
+	@Autowired
+	private EmployeeService service;
+
+	@GetMapping("/empLoginForm")
+	public String diaplayempLoginForm() {
+		return "empLoginForm";
+	}// End of displayLoginForm
+
+	@PostMapping("/empLogin")
+	public String empLogin(int empId, String pass, ModelMap map, HttpServletRequest req) {
+
+		EmployeeInfoBean bean = service.authenticate(empId, pass);
+		if (bean != null) {
+			// Valid Credentials
+			HttpSession session = req.getSession(true);
+			session.setAttribute("empInfo", bean);
+			return "empHomePage";
+		} else {
+			map.addAttribute("msg", "Invalid UsernamePassword");
+			return "empLoginForm";
+		}
+	}// End of EmpLogin
+
+	@GetMapping("/addEmployeeForm")
+	public String displayAddEmployeeForm(HttpSession session, ModelMap map) {
+		if(session.isNew()) {
+			map.addAttribute("msg","Please Login First");
+			return "employeeLoginForm";
+		}
+		else {
+			return "addEmployeeForm";
+		}
+	}
+	
+	
+	@PostMapping("addEmployee")
+	public String addEmployee(ModelMap map,EmployeeInfoBean employeeInfoBean,HttpSession session) {
+		if(session.isNew()) {
+			map.addAttribute("msg","Please Login First");
+			return "employeeLoginForm";
+		}
+		else {
+			
+		}
+	}
+	
+	
+}// End of Controller class

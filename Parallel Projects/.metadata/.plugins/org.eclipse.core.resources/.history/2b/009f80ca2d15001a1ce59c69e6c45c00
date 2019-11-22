@@ -1,0 +1,9 @@
+package com.capgemini.medicalhibernate.controller;
+
+public class Login {
+
+	public void loginUser() {
+		
+	}
+
+}

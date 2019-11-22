@@ -1,0 +1,63 @@
+package com.capgemini.medicalcollection.dao;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+import com.capgemini.medicalcollection.bean.CartBean;
+import com.capgemini.medicalcollection.database.CartDatabase;
+import com.capgemini.medicalcollection.database.MedicineDataBase;
+
+public class CartDAOImpli implements CartDAO {
+	public Set<CartBean> cartList = new CartDatabase().getCartBeans();
+	CartDatabase cartDatabase = new CartDatabase();
+	MedicineDataBase medicineDatabase = new MedicineDataBase();
+	Set<MedicineDataBase> medList = medicineDatabase.getMed();
+	@Override
+	public Set<CartBean> getCart(int uid) {
+		Set<CartBean> list = new LinkedHashSet<CartBean>();
+		for (CartBean cartBean : cartList) {
+			if (cartBean.getUid() == uid) {
+				System.out.println("Hello");
+				list.add(cartBean);
+			}
+		}
+		return list;
+	}
+
+	@Override
+	public boolean removecart(int cartItem) {
+		CartBean cart = null;
+		boolean isDeleted = false;
+		for (CartBean cartBean : cartList) {
+			if (cartItem == cartBean.getCartId()) {
+				cart = new CartBean();
+				cart = cartBean;
+				break;
+			}
+		}
+		if (cart != null) {
+			cartList.remove(cart);
+			isDeleted = true;
+		}
+		return isDeleted;
+	}
+
+	@Override
+	public boolean addToAdd(CartBean bean) {
+		bean.setCartId(cartList.size() + 1512534);
+		int check = 0;
+		boolean isAdded = false;
+		for (CartBean cartBean : cartList) {
+				check++;
+				break;
+		}
+		if (check == 0) {
+			cartList.add(bean);
+			isAdded = true;
+		}else {
+			isAdded = false;
+		}
+		return isAdded;
+	}
+
+}

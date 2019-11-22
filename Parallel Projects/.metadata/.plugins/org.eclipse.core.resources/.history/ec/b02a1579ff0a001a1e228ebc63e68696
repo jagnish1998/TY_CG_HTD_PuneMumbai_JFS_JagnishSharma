@@ -1,0 +1,52 @@
+package com.capgemini.medicalspringrest.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
+
+import org.springframework.stereotype.Repository;
+
+import com.capgemini.medicalspringrest.bean.MedicineBean;
+
+@Repository
+public class MedicineDAOImpli implements MedicineDAO {
+	
+
+	@PersistenceUnit
+	private EntityManagerFactory emf;
+
+	@Override
+	public MedicineBean getMedicine(int medicineId) {
+		EntityManager manager = emf.createEntityManager();
+		MedicineBean medicineBean = manager.find(MedicineBean.class, medicineId);
+		manager.close();
+		return medicineBean;
+	}
+
+	@Override
+	public boolean addMedicine(MedicineBean medicineBean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean deleteMedicine(int medicineId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateMedicine(MedicineBean medicineBean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public List<MedicineBean> getAllMedicine() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,6 @@
+package com.capgemini.medicalcollection.dao;
+
+public interface OrderDAO {
+	
+	
+}

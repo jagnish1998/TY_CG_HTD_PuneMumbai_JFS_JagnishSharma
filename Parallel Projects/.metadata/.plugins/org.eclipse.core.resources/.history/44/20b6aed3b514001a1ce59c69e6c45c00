@@ -1,0 +1,55 @@
+package com.capgemini.medicalcollection.dao;
+
+import java.util.ArrayList;
+
+import com.capgemini.medicalcollection.bean.MessageBean;
+
+public class MessageDAOImpli implements MessageDAO {
+
+	@Override
+	public boolean sendMessage(String message, int uId) {
+		MessageBean bean = new MessageBean();
+		int mId = msgList.size() + 1;
+		bean.setMsid(mId);
+		bean.setUid(uId);
+		bean.setMessage(message);
+		bean.setType(type);
+		msgList.add(bean);
+
+		return true;
+	}
+
+	@Override
+	public MessageBean viewResponse(int uId) {
+		for (MessageBean messageBean : msgList) {
+			if (messageBean.getType().equals("Response") && messageBean.getUid() == uId) {
+				System.out.println(messageBean);
+				System.out.println("-------------------------------------------");
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public boolean sendResponse(String message, int uId) {
+		MessageBean bean = new MessageBean();
+		int mId = msgList.size() + 1;
+		bean.setMsid(mId);
+		bean.setMessage(message);
+		bean.setType(type);
+		bean.setUid(uId);
+		msgList.add(bean);
+		return true;
+	}
+
+	@Override
+	public MessageBean viewMessage() {
+		for (MessageBean messageBean : msgList) {
+			if (messageBean.getType().equals("Question")) {
+				System.out.println(messageBean);
+				System.out.println("-------------------------------------------");
+			}
+		}
+		return null;
+	}
+}

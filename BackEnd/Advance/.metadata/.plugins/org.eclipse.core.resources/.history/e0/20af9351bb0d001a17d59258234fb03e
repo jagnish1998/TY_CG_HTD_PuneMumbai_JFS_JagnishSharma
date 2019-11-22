@@ -1,0 +1,27 @@
+package com.capgemini.springcore.beans;
+
+public class Sports {
+	private String name;
+	private int totalPlayer;
+	private map<String,String > teamInfo;
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getTotalPlayer() {
+		return totalPlayer;
+	}
+	public void setTotalPlayer(int totalPlayer) {
+		this.totalPlayer = totalPlayer;
+	}
+	public map<String, String> getTeamInfo() {
+		return teamInfo;
+	}
+	public void setTeamInfo(map<String, String> teamInfo) {
+		this.teamInfo = teamInfo;
+	}
+	
+	
+}

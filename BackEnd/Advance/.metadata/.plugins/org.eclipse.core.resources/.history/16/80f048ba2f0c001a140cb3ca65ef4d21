@@ -1,0 +1,50 @@
+package com.capgemini.springrest.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.capgemini.springrest.bean.EmployeeInfoBean;
+import com.capgemini.springrest.service.EmployeeService;
+
+//@Controller
+@RestController
+public class EmployeeRestController {
+
+	@Autowired
+	private EmployeeService service;
+
+	@GetMapping("/getEmployee")
+	@ResponseBody
+	public EmployeeInfoBean getEmployee(int empId) {
+		return service.getEmployee(empId);
+	}// End of get Employee
+
+	@PutMapping("/addEmployee")
+	@ResponseBody
+	public boolean addEmployee(@RequestBody EmployeeInfoBean employeeInfoBean) {
+		return service.addEmployee(employeeInfoBean);
+	}
+	
+	@DeleteMapping("/deleteEmployee")
+	@ResponseBody
+	public boolean deleteEmployee(int empId) {
+		return service.deleteEmployee(empId);
+	}
+	
+	@PostMapping("/updateEmployee")
+	public boolean updateEmployee(@RequestBody EmployeeInfoBean employeeInfoBean) {
+		return service.updateEmployee(employeeInfoBean);
+	}
+	
+	@PostMapping("/getAll")
+	public boolean getAllEmployee(EmployeeInfoBean employeeInfoBean) {
+		return service.updateEmployee(employeeInfoBean);
+	}
+}

@@ -1,0 +1,9 @@
+package com.capgemini.medicalhibernate.controller;
+
+public class Removecart {
+
+	public void removeMedicine(int cartid) {
+		
+	}
+
+}

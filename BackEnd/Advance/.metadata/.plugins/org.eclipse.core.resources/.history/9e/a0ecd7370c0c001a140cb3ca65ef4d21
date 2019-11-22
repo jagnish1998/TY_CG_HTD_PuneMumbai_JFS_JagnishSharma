@@ -1,0 +1,12 @@
+package com.capgemini.springrest.service;
+
+import com.capgemini.springrest.bean.EmployeeInfoBean;
+
+public interface EmployeeService {
+	
+	public EmployeeInfoBean getEmployee(int empId);
+	public EmployeeInfoBean authenticate(int empId, String pwd);
+	public boolean addEmployee(EmployeeInfoBean employeeInfoBean);
+	public boolean updateEmployee(EmployeeInfoBean employeeInfoBean);
+
+}//End of Service

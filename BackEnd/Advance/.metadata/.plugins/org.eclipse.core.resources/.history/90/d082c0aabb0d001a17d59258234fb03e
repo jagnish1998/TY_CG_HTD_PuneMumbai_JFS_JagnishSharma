@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Configuration for Set -->
+	<bean id="medicine"
+		class="com.capgemini.springcore.beans.Sports">
+		<property name="name" value="Crocine" />
+		<property name="price" value="50.59" />
+		<property name="type" value="Allopathic" />
+		<property name="drugs">
+		<set>
+			<value>ABC1</value>
+			<value>Peracetamol</value>
+			<value>Xyz</value>
+			<value>asdfghjkl</value>
+		</set>
+	</property>
+	</bean>
+

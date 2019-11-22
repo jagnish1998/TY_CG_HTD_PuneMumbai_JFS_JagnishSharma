@@ -1,0 +1,13 @@
+package com.capgemini.newspringboot.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class SpringBootController {
+
+	@GetMapping(path = "/", produces = "text/plain")
+	public String welcomeMessage() {
+		return "Welcome to Spring Boot";
+	}// End of welcomeMessage
+}// End of Controller

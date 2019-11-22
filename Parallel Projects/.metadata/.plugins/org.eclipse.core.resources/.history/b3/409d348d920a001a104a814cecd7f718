@@ -1,0 +1,11 @@
+package com.capgemini.medicalhibernate.controller;
+
+import com.capgemini.medicalhibernate.bean.CartBean;
+
+public class CartDAO {
+
+	public boolean addTOCart(CartBean cart) {
+		return false;
+	}
+
+}

@@ -1,0 +1,7 @@
+package com.capgemini.medicaljdbc.bean;
+
+public class ViewHistory {
+	private String name;
+	private double price;
+	private String Category;
+}

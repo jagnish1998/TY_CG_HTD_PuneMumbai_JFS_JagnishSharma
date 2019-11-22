@@ -1,0 +1,12 @@
+package com.capgemini.medicalhibernate.controller;
+
+import com.capgemini.medicalhibernate.bean.UserBean;
+
+public class MessageController {
+
+	public void adminmessage(UserBean bean) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

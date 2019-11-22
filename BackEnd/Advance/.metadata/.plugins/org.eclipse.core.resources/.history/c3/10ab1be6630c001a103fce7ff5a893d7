@@ -1,0 +1,78 @@
+package com.capgemini.springmvc.controller;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.capgemini.springmvc.bean.UserBean;
+
+@Controller
+public class SpringMVCController {
+
+	public void initBinder(WebDataBinder binder) {
+		CustomDateEditor dateEditor = new CustoDateEditor(new SimpleDateFormat("yyyy-MM-dd"),true);
+	}
+	@RequestMapping(path = "/hello", method = RequestMethod.GET)
+	public ModelAndView displayHeloUser() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/WEB-INF/views/helloUser.jsp");
+		return modelAndView;
+	}// End of Display Hello
+
+	@RequestMapping(path = "/loginForm", method = RequestMethod.GET)
+	public ModelAndView displayLoginForm() {
+		ModelAndView modelAndView = new ModelAndView();
+	//	modelAndView.setViewName("/WEB-INF/views/loginForm.jsp");
+		modelAndView.setViewName("loginForm");
+		return modelAndView;
+	}// End of DisplayLogin Form
+
+	// Using Servlet How to Get Form Data
+	@RequestMapping(path = "/login", method = RequestMethod.POST)
+	public ModelAndView login(HttpServletRequest req, ModelAndView modelAndView) {
+		String empID = req.getParameter("empId");
+		String pass = req.getParameter("pass");
+		req.setAttribute("empId", empID);
+		req.setAttribute("pass", pass);
+
+		modelAndView.setViewName("/WEB-INF/views/userDetails.jsp");
+		return modelAndView;
+
+	}// End of Login
+
+	
+	// USing Spring How to get Form Data
+	@RequestMapping(path = "/login2", method =RequestMethod.POST)
+	public String login2(@RequestParam("empId") String empId, 
+			@RequestParam("pass") String pass,ModelMap modelMap) {
+		modelMap.addAttribute("empId",empId);
+		modelMap.addAttribute("pass",pass);
+		return "/WEB-INF/views/userDetails.jsp";
+	}
+	
+	
+	//Another Way OF getting the Data Form Form
+	//@RequestMapping(path ="/login3" , method = RequestMethod.POST)
+	@PostMapping("/login3")
+	public String login3(String empId,String pass,ModelMap modelMap) {
+		modelMap.addAttribute("empId",empId);
+		modelMap.addAttribute("pass",pass);
+		return "userDetails";
+		
+	}//Another Way of Getting the Data From Form is using Bean Object
+	@PostMapping("/login4")
+	public String login4(UserBean userBean,ModelMap map) {
+		map.addAttribute("userBean", userBean);
+		return "userDetails";
+	}
+}

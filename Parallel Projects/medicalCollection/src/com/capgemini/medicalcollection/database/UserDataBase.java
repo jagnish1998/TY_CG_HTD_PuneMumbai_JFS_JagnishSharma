@@ -1,0 +1,24 @@
+package com.capgemini.medicalcollection.database;
+
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+
+import com.capgemini.medicalcollection.bean.UserBean;
+
+public class UserDataBase {
+	static Set<UserBean> userBeans = new LinkedHashSet<UserBean>();
+
+	static {
+		UserBean b1 = new UserBean(101, "Jagnish", "jagnish", "admin", "jagnish@gmail.com");
+		UserBean b2 = new UserBean(102, "Uday", "uday", "user", "uday@gmail.com");
+		UserBean b3 = new UserBean(103, "Mohit", "mohit","user", "mohit@gmail.com");
+		userBeans.add(b1);
+		userBeans.add(b2);
+		userBeans.add(b3);
+	}
+
+	public Set<UserBean> getUser() {
+		return userBeans;
+	}
+}

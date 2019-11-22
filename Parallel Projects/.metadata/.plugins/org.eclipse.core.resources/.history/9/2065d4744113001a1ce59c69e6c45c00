@@ -1,0 +1,48 @@
+package com.capgemini.medicalcollection.controller;
+
+import java.util.Scanner;
+import java.util.Set;
+
+import com.capgemini.medicalcollection.bean.CartBean;
+import com.capgemini.medicalcollection.bean.MedicineBean;
+import com.capgemini.medicalcollection.bean.UserBean;
+import com.capgemini.medicalcollection.dao.CartDAO;
+import com.capgemini.medicalcollection.dao.MedicineDAO;
+import com.capgemini.medicalcollection.factory.MedicineFactory;
+
+public class ViewCart {
+	public void showCart(UserBean bean) {
+		CartDAO cDao = MedicineFactory.getCartDAO();
+		MedicineDAO mDao = MedicineFactory.getMedicineDAO();
+		Set<CartBean> cartList = cDao.getCart(bean.getUserId());
+		Set<MedicineBean> medList = mDao.getMedicine();
+		double price = 0;
+		if (cartList != null && !cartList.isEmpty()) {
+			for (CartBean cartBean : cartList) {
+				for (MedicineBean medicineBean : medList) {
+					if (cartBean.getMid() == medicineBean.getMedicine_code()) {
+						System.out.println("CartId is " + cartBean.getCartId() + "Medicine Name "
+								+ medicineBean.getMedicine_name() + "Price " + medicineBean.getPrice());
+						price = price + medicineBean.getPrice();
+					}
+				}
+			}
+			System.out.println("Your Total Bill is " + price);
+			System.out.println("Press 1 to Remove Item Card From Cart");
+			System.out.println("Press 2 to Place Order");
+			System.out.println("Press any key continue to ");
+			Scanner scan = new Scanner(System.in);
+			int choice = Integer.parseInt(scan.nextLine());
+			if (choice == 1) {
+
+			} else if (choice == 2) {
+
+			}else {
+				new UserIndex().userIndex(bean);
+			}
+
+		} else {
+			System.out.println("No Item Present In Cart");
+		}
+	}
+}

@@ -1,0 +1,10 @@
+package com.capgemini.medicalhibernate.controller;
+
+import com.capgemini.medicalhibernate.bean.UserBean;
+
+public class ViewCart {
+
+	public void options(UserBean bean) {
+		
+	}
+}

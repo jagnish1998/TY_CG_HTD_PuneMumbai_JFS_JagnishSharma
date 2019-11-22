@@ -1,0 +1,14 @@
+package com.capgemini.medicalhibernate.dao;
+
+import java.util.List;
+
+import com.capgemini.medicalhibernate.bean.MedicineBean;
+
+public class MedicineDAOImpli implements MedicineDAO {
+
+	@Override
+	public List<MedicineBean> getMedicine() {
+		return null;
+	}
+
+}

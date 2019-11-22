@@ -1,0 +1,8 @@
+package com.capgemini.medicalspringrest.dao;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class CartDAOImpli implements CartDAO{
+
+}

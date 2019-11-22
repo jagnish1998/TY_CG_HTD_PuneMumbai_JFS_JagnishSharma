@@ -1,0 +1,10 @@
+package com.capgemini.medicalspringrest.dao;
+
+import com.capgemini.medicalspringrest.bean.UserBean;
+
+public interface UserDAO {
+
+	UserBean getUser(int userId);
+	public boolean addUser(UserBean bean);
+	public boolean addAllUser();
+}

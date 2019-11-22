@@ -1,0 +1,63 @@
+package com.capgemini.medicalcollection.dao;
+
+import java.util.Set;
+
+import com.capgemini.medicalcollection.bean.MedicineBean;
+import com.capgemini.medicalcollection.bean.UserBean;
+import com.capgemini.medicalcollection.controller.RegisterUser;
+import com.capgemini.medicalcollection.database.MedicineDataBase;
+import com.capgemini.medicalcollection.database.UserDataBase;
+
+public class MedicineDAOImpli implements MedicineDAO {
+	MedicineBean bean;
+	MedicineDataBase dataBase = new MedicineDataBase();
+	Set<MedicineBean> medList = dataBase.getMed();
+
+	@Override
+	public Set<MedicineBean> getMedicine() {
+		MedicineDataBase medDataBase = new MedicineDataBase();
+		return medDataBase.getMed();
+	}
+
+	@Override
+	public boolean addMedicine(MedicineBean bean) {
+		int check = 0;
+		bean.setMedicine_code(medList.size() + 10001);
+		boolean isAdded = false;
+		for (MedicineBean medList : medList) {
+			if (bean.getMedicine_name().equals(medList.getMedicine_name())) {
+				check++;
+			}
+		}
+		if (check == 0) {
+			medList.add(bean);
+			isAdded = true;
+		} else {
+			System.out.println("Medicine Already Exist");
+			new RegisterUser().userRegister();
+		}
+		return isAdded;
+	}
+
+	@Override
+	public boolean removeMedicine(int mCode) {
+		
+		
+		int check = 0;
+		bean.setMedicine_code(medList.size() + 10001);
+		boolean isRemoved = false;
+		for (MedicineBean medList : medList) {
+			if (bean.getMedicine_name().equals(medList.getMedicine_name())) {
+				check++;
+			}
+		}
+		if (check == 0) {
+			medList.remove(bean);
+			isRemoved = true;
+		} else {
+			System.out.println("Medicine Already Exist");
+			new RegisterUser().userRegister();
+		}
+		return isRemoved;
+	}
+}

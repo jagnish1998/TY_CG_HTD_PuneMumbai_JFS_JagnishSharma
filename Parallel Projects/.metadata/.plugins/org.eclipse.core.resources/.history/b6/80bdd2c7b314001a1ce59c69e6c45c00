@@ -1,0 +1,5 @@
+package com.capgemini.medicalcollection.dao;
+
+public class MessageDAOImpli implements MessageDAO {
+
+}

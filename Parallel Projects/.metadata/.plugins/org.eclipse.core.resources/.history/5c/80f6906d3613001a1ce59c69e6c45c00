@@ -1,0 +1,32 @@
+package com.capgemini.medicalcollection.bean;
+
+public class CartItem {
+	private int mid;
+	private int uid;
+	private int price;
+
+	public int getMid() {
+		return mid;
+	}
+
+	public void setMid(int mid) {
+		this.mid = mid;
+	}
+
+	public int getUid() {
+		return uid;
+	}
+
+	public void setUid(int uid) {
+		this.uid = uid;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+}

@@ -1,0 +1,7 @@
+package com.capgemini.medicalcollection.controller;
+
+public class ChagngePassword {
+	public void changePassword() {
+		
+	}
+}

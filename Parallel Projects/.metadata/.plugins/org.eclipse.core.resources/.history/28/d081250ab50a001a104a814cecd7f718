@@ -1,0 +1,5 @@
+package com.capgemini.medicalhibernate.bean;
+
+public class MessageBean {
+
+}

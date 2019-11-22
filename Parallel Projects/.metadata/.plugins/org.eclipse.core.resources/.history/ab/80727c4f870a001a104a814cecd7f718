@@ -1,0 +1,11 @@
+package com.capgemini.medicalhibernate.dao;
+
+import java.util.Set;
+
+import com.capgemini.medicalhibernate.bean.MedicineBean;
+
+public interface MedicineDAO {
+
+	public Set<MedicineBean> getMedicine();
+
+}

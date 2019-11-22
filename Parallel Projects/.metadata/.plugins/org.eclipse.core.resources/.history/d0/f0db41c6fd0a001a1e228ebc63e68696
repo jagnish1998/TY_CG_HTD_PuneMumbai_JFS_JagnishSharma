@@ -1,0 +1,5 @@
+package com.capgemini.medicalspringrest.service;
+
+public class MedicineServiceImpli implements MedicineService {
+	
+}

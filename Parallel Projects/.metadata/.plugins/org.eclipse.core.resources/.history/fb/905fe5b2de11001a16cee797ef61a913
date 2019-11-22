@@ -1,0 +1,10 @@
+package com.capgemini.medicalcollection.controller;
+
+import com.capgemini.medicalcollection.bean.UserBean;
+
+public class UserIndex {
+	public void userIndex(UserBean userBean) {
+		System.out.println("--------------------------Welcome to User HomePage " +userBean.getUserName()+"-------------------------------");
+		System.out.println();
+	}
+}

@@ -1,0 +1,64 @@
+package com.capgemini.medicalcollection.controller;
+
+import java.util.Scanner;
+
+import com.capgemini.medicalcollection.bean.UserBean;
+
+public class AdminIndex {
+	public void adminIndex(UserBean userBean) {
+		System.out.println("--------------------------Welcome to Admin HomePage " + userBean.getUserName()
+				+ "-------------------------------");
+		System.out.println("Enter Your Choice ");
+		System.out.println("Press 1 for Add Medicine");
+		System.out.println("Press 2 for View  Medicine");
+		System.out.println("Press 3 for Remove  Medicine");
+		System.out.println("Press 4 for  update Medicine");
+		System.out.println("Press 5 for Add user");
+		System.out.println("Press 6 for  View User");
+		System.out.println("Press 7 for  Remove User");
+		System.out.println("Press 8 to Change Password");
+		System.out.println("Press 9 for Message");
+		System.out.println("Press 10 for Logout");
+
+		Scanner scan = new Scanner(System.in);
+		int choice = Integer.parseInt(scan.nextLine());
+		switch (choice) {
+		case 1:
+//			new AddMedicine().addMedicine(bean);
+			break;
+		case 2:
+			// new ViewMedicine().viewMedicine(bean);
+			break;
+		case 3:
+			// new RemoveMedicine().removeMedicine(bean);
+			break;
+		case 4:
+			// new UpdateMedicine().updateMedicine(bean);
+			break;
+		case 5:
+			new RegisterUser().adminRegister(userBean);
+			break;
+		case 6:
+			new Viewuser().viewUser(userBean);
+			break;
+		case 7:
+			 new RemoveUser().removeUser(userBean);
+			break;
+		case 8:
+			// new ChangePassword().changePassword(bean);
+			break;
+		case 9:
+			// new MessageController().adminmessage(bean);
+		case 10:
+			System.out.println("Thankyou  Logout SucessFull");
+			// new Logout().logout();
+			break;
+		default:
+			System.err.println("Invalid OutPut Please Enter Correct OutPut");
+			// new AdminIndex().choice(bean);
+			break;
+		}
+
+	}
+
+}

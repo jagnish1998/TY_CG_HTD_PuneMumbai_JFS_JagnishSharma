@@ -1,0 +1,13 @@
+package com.capgemini.medicalhibernate.dao;
+
+import com.capgemini.medicalhibernate.bean.CartBean;
+
+public class CartDAOImpli implements CartDAO {
+
+	@Override
+	public boolean addTOCart(CartBean cart) {
+		
+		return false;
+	}
+
+}

@@ -1,0 +1,50 @@
+package com.capgemini.medicaljdbc.controller;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.capgemini.medicaljdbc.bean.OrderBean;
+import com.capgemini.medicaljdbc.bean.UserBean;
+import com.capgemini.medicaljdbc.dao.OrderDAO;
+import com.capgemini.medicaljdbc.factory.MedicineFactory;
+
+public class ViewHistory {
+	public void viewHistory(UserBean bean) {
+		OrderDAO orderDAO = MedicineFactory.getOrderDao();
+		Scanner scan = new Scanner(System.in);
+		List<OrderBean> list = orderDAO.getAll(bean.getUserId());
+		if (!list.isEmpty()) {
+			for (OrderBean orderBean : list) {
+				System.out.println(orderBean);
+			}
+			System.out.println("Enter 1 to view Ordered Item");
+			System.out.println("Enter any Key to continue");
+			int choice = scan.nextInt();
+			switch (choice) {
+			case 1:
+				System.out.println("Enter orderId");
+				int orderId = scan.nextInt();
+				if (!list.isEmpty()) {
+					int cnd = 0;
+					for (OrderBean orderBean : list) {
+						System.out.println(orderBean.getOrderId());
+						if (orderId == orderBean.getOrderId()) {
+							new ViewUserOrderItem().viewOrderItem(orderId);
+							cnd++;
+							break;
+						} 
+					}
+					if(cnd!=0) {
+						System.out.println("Please Enter valid OrderId");
+					}
+				}
+				break;
+			default:
+				break;
+			}
+		} else {
+			System.out.println("You have no Previous Order");
+		}
+		new UserIndex().choice(bean);
+	}
+}

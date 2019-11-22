@@ -1,0 +1,15 @@
+package com.capgemini.medicalcollection.controller;
+
+import java.util.Scanner;
+
+import com.capgemini.medicalcollection.bean.UserBean;
+
+public class UpdatePrice {
+	public void updatePrice(UserBean userBean) {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter MedId Want To delete");
+		int Mcode = Integer.parseInt(scan.nextLine());
+		
+		new AdminIndex().adminIndex(userBean);
+	}
+}

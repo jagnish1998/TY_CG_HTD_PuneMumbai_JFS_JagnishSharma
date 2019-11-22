@@ -1,0 +1,10 @@
+package com.capgemini.medicalhibernate.controller;
+
+public class Register {
+
+	public void registerUser() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

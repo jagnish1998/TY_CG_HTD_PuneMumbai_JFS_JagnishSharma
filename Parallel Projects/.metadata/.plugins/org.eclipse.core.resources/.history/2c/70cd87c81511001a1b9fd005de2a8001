@@ -1,0 +1,9 @@
+package com.capgemini.medicalcollection.controller;
+
+import com.capgemini.medicalcollection.bean.UserBean;
+
+public class AdminIndex {
+	public adminIndex(UserBean userBean) {
+		
+	}
+}

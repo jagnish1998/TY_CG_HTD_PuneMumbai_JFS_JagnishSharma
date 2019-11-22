@@ -1,0 +1,8 @@
+package com.capgemini.medicaljdbc.bean;
+
+public class CartTableBean {
+	private int cTableId;
+	private double price;
+	private int mId;
+	private int OrderId;
+}

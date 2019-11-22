@@ -1,0 +1,18 @@
+package com.capgemini.medicalhibernate.dao;
+
+import com.capgemini.medicalhibernate.bean.UserBean;
+
+public class UserDAOImpli implements UserDAO {
+
+
+	EntityManagerFactory entityManagerFactory=null;
+	EntityManager entityManager=null;
+
+
+
+	@Override
+	public UserBean loginUser(String email, String password) {
+
+	}
+
+}

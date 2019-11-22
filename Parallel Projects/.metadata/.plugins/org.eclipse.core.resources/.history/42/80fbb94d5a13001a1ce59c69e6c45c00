@@ -1,0 +1,22 @@
+package com.capgemini.medicalcollection.controller;
+
+import java.util.Scanner;
+
+import com.capgemini.medicalcollection.bean.CartBean;
+import com.capgemini.medicalcollection.bean.UserBean;
+import com.capgemini.medicalcollection.dao.CartDAO;
+import com.capgemini.medicalcollection.factory.MedicineFactory;
+
+public class AddToCart {
+	public void addTOCart(UserBean userBean) {
+		Scanner scan = new Scanner(System.in);
+		CartDAO dao = MedicineFactory.getCartDAO();
+		System.out.println("Enter MedId to add to cart");
+		int mid = Integer.parseInt(scan.nextLine());
+		
+		CartBean cartBean = new CartBean(0,mid,userBean.getUserId());
+		if(dao.addToAdd(cartBean)) {
+			System.out.println("Medicine Added SuccessFully");
+		}
+	}
+}

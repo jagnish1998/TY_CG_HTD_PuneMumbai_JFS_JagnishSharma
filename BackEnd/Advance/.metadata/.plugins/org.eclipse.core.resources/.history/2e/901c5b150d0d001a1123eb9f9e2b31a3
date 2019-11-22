@@ -1,0 +1,5 @@
+package com.capgemini.newspringboot.controller;
+
+public class SpringBootController {
+
+}

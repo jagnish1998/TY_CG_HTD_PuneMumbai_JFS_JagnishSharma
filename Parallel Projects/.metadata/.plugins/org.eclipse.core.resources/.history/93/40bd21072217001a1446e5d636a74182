@@ -1,0 +1,15 @@
+package com.capgemini.medicalspringrest.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.capgemini.medicalspringrest.dao.CartDAO;
+
+@Service
+public class CartServiceImpli implements CartService {
+
+	@Autowired
+	private CartDAO cartDAO;
+	
+	
+}

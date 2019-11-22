@@ -1,0 +1,9 @@
+package com.capgemini.medicalcollection.dao;
+
+import java.util.Set;
+
+import com.capgemini.medicalcollection.bean.MedicineBean;
+
+public interface MedicineDAO {
+	public Set<MedicineBean> getMedicine();
+}

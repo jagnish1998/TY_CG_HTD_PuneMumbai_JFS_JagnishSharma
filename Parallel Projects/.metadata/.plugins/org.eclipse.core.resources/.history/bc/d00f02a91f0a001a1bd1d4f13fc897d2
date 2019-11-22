@@ -1,0 +1,7 @@
+package com.capgemini.medicalspringrest.service;
+
+import com.capgemini.medicalspringrest.dao.OrderDAO;
+
+public class OrderServiceImpli implements OrderDAO {
+
+}

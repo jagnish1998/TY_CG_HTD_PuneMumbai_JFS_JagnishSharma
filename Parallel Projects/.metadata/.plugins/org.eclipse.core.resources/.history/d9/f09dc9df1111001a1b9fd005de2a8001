@@ -1,0 +1,14 @@
+package com.capgemini.medicalcollection.controller;
+
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+import com.capgemini.medicalcollection.bean.UserBean;
+
+public class UserController {
+	
+	
+
+}

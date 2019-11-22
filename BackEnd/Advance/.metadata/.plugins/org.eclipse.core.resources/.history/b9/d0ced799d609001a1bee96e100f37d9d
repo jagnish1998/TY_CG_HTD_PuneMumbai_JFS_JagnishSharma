@@ -1,0 +1,19 @@
+package com.capgemini.springmvc.bean;
+
+public class UserBean {
+	private String empId;
+	private String pass;
+	public String getEmpId() {
+		return empId;
+	}
+	public void setEmpId(String empId) {
+		this.empId = empId;
+	}
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+	
+}

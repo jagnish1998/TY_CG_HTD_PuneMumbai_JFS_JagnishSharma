@@ -1,0 +1,40 @@
+package com.capgemini.medicalcollection.controller;
+
+import java.util.Set;
+
+import com.capgemini.medicalcollection.bean.MedicineBean;
+import com.capgemini.medicalcollection.bean.UserBean;
+import com.capgemini.medicalcollection.dao.MedicineDAO;
+import com.capgemini.medicalcollection.factory.MedicineFactory;
+
+
+public class ViewMedicine {
+	public void viewMedicine() {
+		MedicineDAO dao = MedicineFactory.getMedicineDAO();
+		Set<MedicineBean> medlist = dao.getMedicine();
+		if (medlist != null) {
+			for (MedicineBean medicineBean : medlist) {
+				System.out.println(medicineBean);
+			}
+		} else {
+			System.out.println("Somthing went Wrong");
+		}
+		new Logout().logout();
+	}
+	
+	public void viewMedicine(UserBean bean) {
+		if (bean.getUserType().equals("admin")) {
+			MedicineDAO dao = MedicineFactory.getMedicineDAO();
+			Set<MedicineBean> medlist = dao.getMedicine();
+			if (medlist != null) {
+				for (MedicineBean medicineBean : list) {
+					System.out.println(medicineBean);
+				}
+				new AdminIndex().choice(bean);
+			} else {
+				System.out.println("Somthing went Wrong");
+			}
+			new AdminIndex().choice(bean);
+		}
+
+}

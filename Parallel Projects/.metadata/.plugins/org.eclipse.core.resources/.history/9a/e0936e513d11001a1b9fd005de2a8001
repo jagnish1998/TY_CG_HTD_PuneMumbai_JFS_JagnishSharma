@@ -1,0 +1,10 @@
+package com.capgemini.medicalcollection.controller;
+
+import com.capgemini.medicalcollection.dao.UserDAO;
+import com.capgemini.medicalcollection.factory.MedicineFactory;
+
+public class RegisterUser {
+	public void userRegister() {
+		UserDAO dao = MedicineFactory.getUserDAO();
+	}
+}

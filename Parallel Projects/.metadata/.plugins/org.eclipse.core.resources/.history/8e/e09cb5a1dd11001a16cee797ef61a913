@@ -1,0 +1,13 @@
+package com.capgemini.medicalcollection.controller;
+
+import com.capgemini.medicalcollection.bean.UserBean;
+import com.capgemini.medicalcollection.dao.UserDAO;
+import com.capgemini.medicalcollection.factory.MedicineFactory;
+
+public class ChagngePassword {
+	public void changePassword(UserBean userBean) {
+		UserDAO dao = MedicineFactory.getUserDAO();
+		Scanner scan = new Scanner(System.in);
+		dao.changePassword(bean, pass)
+	}
+}

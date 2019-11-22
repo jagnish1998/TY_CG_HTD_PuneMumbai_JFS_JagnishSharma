@@ -1,0 +1,71 @@
+package com.capgemini.medicalhibernate.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+import com.capgemini.medicalhibernate.bean.MedicineBean;
+
+public class MedicineDAOImpli implements MedicineDAO {
+	EntityManagerFactory entityManagerFactory = null;
+	EntityManager entityManager = null;
+	EntityTransaction entityTransaction = null;
+
+	@Override
+	public List<MedicineBean> getMedicine() {
+		try {
+			entityManagerFactory = Persistence.createEntityManagerFactory("medical");
+			entityManager = entityManagerFactory.createEntityManager();
+			String jpql = " from MedicineBean ";
+			Query query = entityManager.createQuery(jpql);
+			List<MedicineBean> bean = query.getResultList();
+			return bean;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public boolean addMedicine(MedicineBean medBean) {
+		boolean isAdded = false;
+		try {
+			entityManagerFactory = Persistence.createEntityManagerFactory("medical");
+			entityManager = entityManagerFactory.createEntityManager();
+			entityTransaction = entityManager.getTransaction();
+			entityTransaction.begin();
+			entityManager.persist(medBean);
+			isAdded = true;
+			entityTransaction.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			isAdded = false;
+			entityTransaction.rollback();
+		}
+		return isAdded;
+	}
+
+	@Override
+	public boolean removeMedicine(int mCode) {
+		boolean isDeleted = false;
+		try {
+			entityManagerFactory = Persistence.createEntityManagerFactory("medical");
+			entityManager = entityManagerFactory.createEntityManager();
+			entityTransaction = entityManager.getTransaction();
+			MedicineBean medBean = entityManager.find(MedicineBean.class,mCode);
+			entityTransaction.begin();
+			
+			isDeleted = true;
+			entityTransaction.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			isDeleted = false;
+			entityTransaction.rollback();
+		}
+		return isDeleted;
+	}
+}

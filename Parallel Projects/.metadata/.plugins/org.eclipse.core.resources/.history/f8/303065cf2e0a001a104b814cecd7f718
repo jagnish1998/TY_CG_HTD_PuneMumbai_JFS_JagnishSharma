@@ -1,0 +1,9 @@
+package com.capgemini.medicalspringrest.bean;
+
+public class ResponseBean {
+	private int statusCode;
+	private String message;
+	private String description;
+	private UserBean userBean;
+	
+}

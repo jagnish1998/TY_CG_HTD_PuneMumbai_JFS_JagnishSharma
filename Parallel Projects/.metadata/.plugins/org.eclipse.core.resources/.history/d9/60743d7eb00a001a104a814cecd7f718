@@ -1,0 +1,67 @@
+package com.capgemini.medicalhibernate.bean;
+
+import javax.annotation.Resource.AuthenticationType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Generated;
+import org.hibernate.annotations.GenerationTime;
+
+import net.bytebuddy.dynamic.loading.ClassReloadingStrategy.Strategy;
+
+@Entity
+@Table(name = "order")
+public class OrderBean {
+	@Column
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY);
+	private int OrderId;
+	@Column
+	private int uid;
+	@Column
+	private double price;
+	@Column
+	private String Adress;
+
+	@Override
+	public String toString() {
+		return "OrderId = " + OrderId + ", uid = " + uid + ", price = " + price + ", Adress = " + Adress;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public String getAdress() {
+		return Adress;
+	}
+
+	public void setAdress(String adress) {
+		Adress = adress;
+	}
+
+	public int getOrderId() {
+		return OrderId;
+	}
+
+	public void setOrderId(int orderId) {
+		OrderId = orderId;
+	}
+
+	public int getUid() {
+		return uid;
+	}
+
+	public void setUid(int uid) {
+		this.uid = uid;
+	}
+
+}

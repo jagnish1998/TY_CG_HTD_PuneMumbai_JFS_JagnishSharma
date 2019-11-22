@@ -1,0 +1,33 @@
+package com.capgemini.medicalcollection.controller;
+
+import java.util.Scanner;
+
+import com.capgemini.medicalcollection.bean.OrderBean;
+import com.capgemini.medicalcollection.bean.UserBean;
+import com.capgemini.medicalcollection.dao.OrderDAO;
+
+public class PlaceOrder {
+	public void placeOrder(UserBean userBean, double price) {
+		Scanner scan = new Scanner(System.in);
+		OrderDAO dao = 
+		System.out.println("Enter Your Adress");
+		String add = scan.nextLine();
+		System.out.println("Enter Card no.");
+		String cardNo = scan.nextLine();
+		if(cardNo.length()==12) {
+			OrderBean orderBean = new OrderBean();
+			orderBean.setAdress(add);
+			orderBean.setCardno(cardNo);
+			orderBean.setPrice(price);
+			orderBean.setUid(userBean.getUserId());
+			if() {
+				
+			}else {
+				
+			}
+			
+		}else {
+			System.out.println("Enter Correct Cardno.");
+		}
+	}
+}

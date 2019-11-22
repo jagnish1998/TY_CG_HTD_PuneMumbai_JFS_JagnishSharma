@@ -1,0 +1,19 @@
+package com.capgemini.medicalcollection.controller;
+
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+import com.capgemini.medicalcollection.bean.UserBean;
+
+public class UserController {
+	Set<UserBean> userBeans = new LinkedHashSet<UserBean>();
+	UserBean u1 = new UserBean(101, "Jagnish", "jagnish", "admin", "jagnish@gmail.com");
+	UserBean u2 = new UserBean(102, "Uday", "uday", "user", "user@gmail.com");
+
+	public UserController() {
+		userBeans.add(u1);
+		userBeans.add(u2);
+	}
+
+}

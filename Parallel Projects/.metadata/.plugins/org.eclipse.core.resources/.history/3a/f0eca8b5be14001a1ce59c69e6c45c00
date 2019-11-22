@@ -1,0 +1,11 @@
+package com.capgemini.medicalcollection.controller;
+
+import java.util.Scanner;
+
+import com.capgemini.medicalcollection.bean.UserBean;
+
+public class PlaceOrder {
+	public void placeOrder(UserBean userBean, double price) {
+		Scanner scan = new Scanner(System.in);
+	}
+}

@@ -1,0 +1,7 @@
+package com.capgemini.medicalcollection.bean;
+
+public class CartItem {
+	private int mid;
+	private int uid;
+	private int price;
+}

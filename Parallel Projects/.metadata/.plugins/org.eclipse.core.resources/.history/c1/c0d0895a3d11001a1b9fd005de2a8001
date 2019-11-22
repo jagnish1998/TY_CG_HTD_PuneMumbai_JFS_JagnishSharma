@@ -1,0 +1,15 @@
+package com.capgemini.medicalcollection.controller;
+
+import java.util.Scanner;
+
+import com.capgemini.medicalcollection.dao.UserDAO;
+import com.capgemini.medicalcollection.factory.MedicineFactory;
+
+public class RegisterUser {
+	public void userRegister() {
+		UserDAO dao = MedicineFactory.getUserDAO();
+		Scanner scan = new Sca Scanner(System.class); 
+		System.out.println("Enter User email");
+		String email = 
+	}
+}

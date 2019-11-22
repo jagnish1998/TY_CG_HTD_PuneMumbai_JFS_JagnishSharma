@@ -1,0 +1,8 @@
+package com.capgemini.medicalcollection.controller;
+
+public class RemoveUser {
+	public void removeUser() {
+		new Viewuser().viewUser();
+		System.out.println("Enter user Id want to delete");
+	}
+}

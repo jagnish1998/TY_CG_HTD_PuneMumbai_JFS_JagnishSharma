@@ -1,0 +1,12 @@
+package com.capgemini.medicalhibernate.controller;
+
+import com.capgemini.medicalhibernate.bean.UserBean;
+
+public class RemoveUser {
+
+	public void removeUser(UserBean bean) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

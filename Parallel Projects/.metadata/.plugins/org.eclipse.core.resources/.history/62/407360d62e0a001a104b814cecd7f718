@@ -1,0 +1,12 @@
+package com.capgemini.medicalspringrest.bean;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class ResponseBean {
+	private int statusCode;
+	private String message;
+	private String description;
+	private UserBean userBean;
+	
+}

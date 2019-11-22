@@ -1,0 +1,36 @@
+package com.capgemini.medicalcollection.database;
+
+import java.util.ArrayList;
+
+import com.capgemini.medicalcollection.bean.MedicineBean;
+
+public class MedicineDb {
+
+	static ArrayList<MedicineBean> mal = new ArrayList<MedicineBean>();
+	static {
+		
+		MedicineBean m1 = new MedicineBean();
+		m1.setMedicine_code(201);
+		m1.setMedicine_name("Crocine");
+		m1.setPrice(200);
+		m1.setProduct_category("Allopathic");
+		
+		MedicineBean m2 = new MedicineBean();
+		m2.setMedicine_code(202);
+		m2.setMedicine_name("Paracetamol");
+		m2.setPrice(250);
+		m2.setProduct_category("Allopathic");
+		
+		mal.add(m1);
+		mal.add(m2);
+
+	}
+	public ArrayList<MedicineBean> medDB(){
+		
+		
+		
+		return mal;
+		
+	}
+	
+}

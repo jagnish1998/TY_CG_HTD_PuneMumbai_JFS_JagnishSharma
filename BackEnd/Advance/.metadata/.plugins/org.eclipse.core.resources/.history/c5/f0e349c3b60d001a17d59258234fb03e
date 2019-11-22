@@ -1,0 +1,7 @@
+package com.capgemini.springcore;
+
+public class MedicineTest {
+	public static void main(String[] args) {
+
+	}//End of main
+}//End of Class

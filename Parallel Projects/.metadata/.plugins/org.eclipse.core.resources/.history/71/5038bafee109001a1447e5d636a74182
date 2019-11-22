@@ -1,0 +1,21 @@
+package com.capgemini.medicalspringrest.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.capgemini.medicalspringrest.bean.ResponseBean;
+import com.capgemini.medicalspringrest.service.MessageService;
+
+@RestController
+public class MessageController {
+	
+	@Autowired
+	private MessageService messageService;
+	
+	@PutMapping(path = "/showAdminMessage",produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseBean showAdminMessage() {
+		
+	}
+}

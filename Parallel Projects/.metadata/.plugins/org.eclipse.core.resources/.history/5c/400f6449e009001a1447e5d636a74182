@@ -1,0 +1,34 @@
+package com.capgemini.medicalspringrest.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.capgemini.medicalspringrest.bean.MessageBean;
+import com.capgemini.medicalspringrest.dao.MessageDAO;
+
+public class MessageServiceImpli implements MessageService {
+
+	@Autowired
+	private MessageDAO messagedao;
+	
+	@Override
+	public boolean sendMessage(String message, int uId, String type) {
+		return messagedao.sendMessage(message, uId, type);
+	}
+
+	@Override
+	public List<MessageBean> viewResponse(int uId) {
+		return messagedao.viewResponse(uId);
+	}
+
+	@Override
+	public List<MessageBean> viewMessage() {
+		return messagedao.viewMessage();
+	}
+
+	@Override
+	public boolean sendResponse(String message, String type, int uId) {
+		return messagedao.sendResponse(message, type, uId);
+	}
+}

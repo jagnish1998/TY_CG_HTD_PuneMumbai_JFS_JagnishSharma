@@ -1,0 +1,11 @@
+package com.capgemini.medicalhibernate.factory;
+
+import com.capgemini.medicalhibernate.controller.UserDAO;
+
+public class MedicineFactory {
+
+	public static UserDAO getMedicalDAO() {
+		return null;
+	}
+
+}

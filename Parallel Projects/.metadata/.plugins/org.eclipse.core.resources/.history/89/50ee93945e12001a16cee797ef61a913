@@ -1,0 +1,7 @@
+package com.capgemini.medicalcollection.controller;
+
+public class RemoveMedicine {
+	public void removeMedicine() {
+
+	}
+}

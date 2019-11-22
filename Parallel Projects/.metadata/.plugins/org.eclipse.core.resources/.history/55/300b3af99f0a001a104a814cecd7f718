@@ -1,0 +1,14 @@
+package com.capgemini.medicalhibernate.controller;
+
+import java.util.List;
+
+import com.capgemini.medicalhibernate.bean.CartBean;
+import com.capgemini.medicalhibernate.bean.UserBean;
+
+public class PlaceOrder {
+
+	public void placeOrder(double price, UserBean bean) {
+		
+	}
+
+}

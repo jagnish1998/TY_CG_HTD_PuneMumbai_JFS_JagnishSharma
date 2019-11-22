@@ -1,0 +1,9 @@
+package com.capgemini.medicalspringrest.service;
+
+import com.capgemini.medicalspringrest.bean.UserBean;
+
+public interface UserService {
+
+	UserBean getUser(int userId);
+	
+}

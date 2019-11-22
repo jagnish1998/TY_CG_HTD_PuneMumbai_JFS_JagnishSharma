@@ -1,0 +1,5 @@
+package com.capgemini.medicaljdbc.bean;
+
+public class CartTableBean {
+	
+}

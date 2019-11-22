@@ -1,0 +1,20 @@
+package com.capgemini.medicalcollection.factory;
+
+import com.capgemini.medicalcollection.dao.UserDAO;
+import com.capgemini.medicalcollection.dao.UserDAOImpli;
+
+public class MedicineFactory {
+
+	private MedicineFactory() {
+	}
+
+	public static UserDAO getUserDAO() {
+		return new UserDAOImpli();
+	}
+
+	public static UserDAO getMedicineDAO() {
+		return new UserDAOImpli();
+	}
+
+	
+}

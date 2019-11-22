@@ -1,0 +1,32 @@
+<%@page import="com.capgemini.springmvc.bean.EmployeeInfoBean"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ page session="false"%>
+<% HttpSession session = request.getSession(false);
+	EmployeeInfoBean bean = (EmployeeInfoBean) session.getAttribute("empInfo");
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>
+		Welcome
+		<%=bean.getEmpName()%></h3>
+	<a href="./addEmployeeForm">AddEmployee</a>
+	<br>
+	<a href="./updateEmployeeForm">updateEmployee</a>
+	<br>
+	<a href="./deleteEmployeeForm">deleteEmployee</a>
+	<br>
+	<a href="./searchEmployeeForm">searchEmployee</a>
+	<br>
+	<a href="./seeAllEmployees">./seeAllEmployees</a>
+	<br>
+
+	<a href="./logout">Logout</a>
+	<br>
+</body>
+</html>

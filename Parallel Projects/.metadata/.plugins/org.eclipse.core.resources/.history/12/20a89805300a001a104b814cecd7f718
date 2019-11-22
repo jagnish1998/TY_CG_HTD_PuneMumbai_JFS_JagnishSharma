@@ -1,0 +1,27 @@
+package com.capgemini.medicalspringrest.dao;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
+
+import org.springframework.stereotype.Repository;
+
+import com.capgemini.medicalspringrest.bean.UserBean;
+
+@Repository
+public class UserDAOImpli implements UserDAO {
+
+	@PersistenceUnit
+	private EntityManagerFactory emf ;
+	EntityManager manager = emf.createEntityManager();
+	UserBean userBean = manager.find(EmployeeInfoBean.class, empId);
+	manager.close();
+
+	return employeeInfoBean;
+
+	@Override
+	public UserBean getUser(int userId) {
+		return null;
+	}
+
+}

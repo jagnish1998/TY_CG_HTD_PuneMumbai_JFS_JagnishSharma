@@ -1,0 +1,5 @@
+package com.capgemini.medicalspringrest.controller;
+
+public class MedicineController {
+
+}

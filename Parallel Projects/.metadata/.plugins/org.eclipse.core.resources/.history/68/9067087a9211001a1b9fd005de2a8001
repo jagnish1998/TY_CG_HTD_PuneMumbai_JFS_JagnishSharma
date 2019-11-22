@@ -1,0 +1,11 @@
+package com.capgemini.medicalcollection.controller;
+
+import com.capgemini.medicalcollection.bean.UserBean;
+import com.capgemini.medicalcollection.dao.UserDAO;
+import com.capgemini.medicalcollection.factory.MedicineFactory;
+
+public class Viewuser {
+	public viewUser() {
+		UserDAO userDAO = MedicineFactory.getUserDAO();
+	}
+}

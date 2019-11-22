@@ -1,0 +1,11 @@
+package com.capgemini.medicalcollection.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.capgemini.medicalcollection.bean.UserBean;
+
+public class UserController {
+	List<UserBean> userBeans = new ArrayList<UserBean>();
+	
+}

@@ -1,0 +1,35 @@
+package com.capgemini.medicaljdbc.bean;
+
+public class MessageBean {
+
+	private int msid;
+	private int id;
+	private String message;
+
+	// Getters and Setters
+
+	public int getMsid() {
+		return msid;
+	}
+
+	public void setMsid(int msid) {
+		this.msid = msid;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+}

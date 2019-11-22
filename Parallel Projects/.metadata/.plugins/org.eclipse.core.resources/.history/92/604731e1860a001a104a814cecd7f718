@@ -1,0 +1,15 @@
+package com.capgemini.medicalhibernate.dao;
+
+import java.util.Set;
+
+import com.capgemini.medicalhibernate.bean.MedicineBean;
+
+public class MedicineDAOImpli implements MedicineDAO {
+
+	@Override
+	public Set<MedicineBean> getMedicine() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

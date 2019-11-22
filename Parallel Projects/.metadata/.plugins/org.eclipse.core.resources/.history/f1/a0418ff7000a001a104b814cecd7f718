@@ -1,0 +1,29 @@
+package com.capgemini.medicalhibernate.dao;
+
+import java.util.List;
+
+import com.capgemini.medicalhibernate.bean.MessageBean;
+
+public class MessageDAOImpli implements MessageDAO {
+
+	@Override
+	public boolean sendMessage(String message, int uId, String type) {
+		return false;
+	}
+
+	@Override
+	public List<MessageBean> viewResponse(int uId) {
+		return null;
+	}
+
+	@Override
+	public List<MessageBean> viewMessage() {
+		return null;
+	}
+
+	@Override
+	public boolean sendResponse(String message, String type, int uId) {
+		return false;
+	}
+
+}

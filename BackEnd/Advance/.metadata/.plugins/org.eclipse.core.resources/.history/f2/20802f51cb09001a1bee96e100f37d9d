@@ -1,0 +1,40 @@
+package com.capgemini.springmvc.controller;
+
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
+@Controller
+public class SpringMVCController {
+	
+	@RequestMapping(path = "/hello",method = RequestMethod.GET)
+	public ModelAndView displayHeloUser() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/WEB-INF/views/helloUser.jsp");
+		return modelAndView;
+	}//End of Display Hello
+	
+	@RequestMapping(path = "/loginForm" , method = RequestMethod.GET)
+	public ModelAndView displayLoginForm() {
+		ModelAndView modelAndView  = new ModelAndView();
+		modelAndView.setViewName("/WEB-INF/views/loginForm.jsp");
+		return modelAndView;
+	}//End of DisplayLogin Form
+	
+	
+	@RequestMapping(path = "/login", method = RequestMethod.POST)
+	public ModelAndView login(HttpServletRequest req,ModelAndView modelAndView) {
+		String empID = req.getParameter("empId");
+		String password = req.getParameter("pass");
+		req.setAttribute("empId", empID);
+		req.setAttribute("pass", password);
+		
+		modelAndView.setViewName("/WEB-INF/views/userDetails.jsp");
+		return modelAndView;
+		
+	}//End of Login
+}

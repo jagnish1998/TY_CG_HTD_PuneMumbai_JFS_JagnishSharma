@@ -1,0 +1,7 @@
+package com.capgemini.medicalcollection.dao;
+
+import com.capgemini.medicalcollection.bean.UserBean;
+
+public interface UserDAO {
+	public UserBean login(String email,String password);
+}

@@ -1,0 +1,12 @@
+package com.capgemini.medicalspringrest.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.capgemini.medicalspringrest.dao.MedicineDAO;
+
+@Service
+public class MedicineServiceImpli implements MedicineService {
+	@Autowired
+	private MedicineDAO medDAO;
+}

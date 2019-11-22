@@ -1,0 +1,20 @@
+package com.capgemini.medicalcollection.controller;
+
+import java.util.List;
+
+
+public class ViewMedicine {
+	public void viewMedicine() {
+		MedicineDAO dao = MedicineFactory.getMedicineDAO();
+		List<MedicineBean> list = dao.viewmedicine();
+		if (list != null) {
+			for (MedicineBean medicineBean : list) {
+				System.out.println(medicineBean);
+			}
+		} else {
+			System.out.println("Somthing went Wrong");
+		}
+		new Logout().logout();
+	}
+
+}

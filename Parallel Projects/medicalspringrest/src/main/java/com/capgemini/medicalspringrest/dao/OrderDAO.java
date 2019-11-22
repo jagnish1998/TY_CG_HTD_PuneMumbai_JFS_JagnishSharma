@@ -1,0 +1,11 @@
+package com.capgemini.medicalspringrest.dao;
+
+import java.util.List;
+
+import com.capgemini.medicalspringrest.bean.OrderBean;
+
+public interface OrderDAO {
+	
+	public boolean addOrder(OrderBean orderBean);
+	public List<OrderBean> getOrder(int uid);
+}

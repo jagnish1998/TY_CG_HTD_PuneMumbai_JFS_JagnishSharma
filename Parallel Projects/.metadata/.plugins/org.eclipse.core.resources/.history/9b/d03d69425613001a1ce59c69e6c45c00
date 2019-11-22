@@ -1,0 +1,61 @@
+package com.capgemini.medicalcollection.controller;
+
+import java.util.Set;
+
+import com.capgemini.medicalcollection.bean.CartBean;
+import com.capgemini.medicalcollection.bean.MedicineBean;
+import com.capgemini.medicalcollection.bean.UserBean;
+import com.capgemini.medicalcollection.dao.CartDAO;
+import com.capgemini.medicalcollection.dao.MedicineDAO;
+import com.capgemini.medicalcollection.factory.MedicineFactory;
+import com.capgemini.medicaljdbc.controller.AddCart;
+import com.capgemini.medicaljdbc.controller.PlaceOrder;
+import com.capgemini.medicaljdbc.controller.Removecart;
+
+public class ViewCart {
+	public void showCart(UserBean bean) {
+		CartDAO cDao = MedicineFactory.getCartDAO();
+		MedicineDAO mDao = MedicineFactory.getMedicineDAO();
+		Set<CartBean> cartList = cDao.getCart(bean.getUserId());
+		Set<MedicineBean> medList = mDao.getMedicine();
+		double price = 0;
+		if (cartList != null && !cartList.isEmpty()) {
+			for (CartBean cartBean : cartList) {
+				for (MedicineBean medicineBean : medList) {
+					if (cartBean.getMid() == medicineBean.getMedicine_code()) {
+						System.out.println(" CartId is " + cartBean.getCartId() + " Medicine Name "
+								+ medicineBean.getMedicine_name() + " Price " + medicineBean.getPrice());
+						price = price + medicineBean.getPrice();
+					}
+				}
+			}
+			System.err.println("********************************************************************");
+			System.out.println("Your Bill is " + price);
+			System.out.println("Enter 1 to Continue to Shop");
+			System.out.println("Enter 2 to remove From cart");
+			System.out.println("Enter 3 to Place OrderDAO");
+
+			int choice = Integer.parseInt(scan.nextLine());
+			switch (choice) {
+			case 1:
+			//	new AddCart().addCart(bean);
+				break;
+
+			case 2:
+				new Removecart().removeMedicine(cartid);
+				options(bean);
+			case 3:
+				new PlaceOrder().placeOrder(price, bean, list);
+			}
+		} else {
+			System.out.println("You have no Item in your Cart");
+			new AddCart().addCart(bean);
+		}
+
+
+	 else {
+		System.out.println("No Item Present In Cart");
+	}
+	new UserIndex().userIndex(bean);
+}
+}

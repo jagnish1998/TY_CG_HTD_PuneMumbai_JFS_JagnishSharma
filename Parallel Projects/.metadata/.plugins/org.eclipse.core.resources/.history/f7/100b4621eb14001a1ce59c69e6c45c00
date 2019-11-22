@@ -1,0 +1,5 @@
+package com.capgemini.medicalspringrest.config;
+
+public class medicalspringrest {
+
+}

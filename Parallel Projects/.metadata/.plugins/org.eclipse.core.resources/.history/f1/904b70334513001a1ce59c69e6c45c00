@@ -1,0 +1,9 @@
+package com.capgemini.medicalcollection.dao;
+
+import java.util.Set;
+
+import com.capgemini.medicalcollection.bean.CartBean;
+
+public interface CartDAO {
+	public Set<CartBean> getCart(int uid);
+}

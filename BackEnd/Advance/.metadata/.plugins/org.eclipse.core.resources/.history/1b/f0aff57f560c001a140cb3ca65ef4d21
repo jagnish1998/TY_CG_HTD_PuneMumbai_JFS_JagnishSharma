@@ -1,0 +1,100 @@
+package com.capgemini.springrest.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.capgemini.springrest.bean.EmployeeInfoBean;
+import com.capgemini.springrest.bean.EmployeeResponse;
+import com.capgemini.springrest.service.EmployeeService;
+
+//@Controller
+@RestController
+public class EmployeeRestController {
+
+	@Autowired
+	private EmployeeService service;
+	private EmployeeResponse response;
+	@GetMapping(path = "/getEmployee", produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public EmployeeInfoBean getEmployee(int empId) {
+		return service.getEmployee(empId);
+	}// End of get Employee
+
+	
+	
+	@PutMapping(path = "/addEmployee", 
+			consumes = { MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE },
+			produces = MediaType.APPLICATION_JSON_VALUE)
+	// @ResponseBody
+	public EmployeeResponse addEmployee(@RequestBody EmployeeInfoBean employeeInfoBean) {
+		boolean isAdded = service.addEmployee(employeeInfoBean);
+		if(isAdded) {
+			response.setStatusCode(201);
+			response.setMessage("Success");
+			response.setDescription("User Added SucessFully");
+		}else {
+			response.setStatusCode(401);
+			response.setMessage("Success");
+			response.setDescription("Unable to Add Employee");
+		}
+		return response;
+	}//nd of Add Employee
+	
+	
+	
+	
+
+	@DeleteMapping(path = "/deleteEmployee",
+      produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE })
+	// @ResponseBody
+	public EmployeeResponse deleteEmployee(int empId) {
+		boolean isDeleted =  service.deleteEmployee(empId);
+		if(isDeleted) {
+			response.setStatusCode(201);
+			response.setMessage("Success");
+			response.setDescription("User deleted SucessFully");
+		}else {
+			response.setStatusCode(401);
+			response.setMessage("Success");
+			response.setDescription("Unable to Delete Employee");
+		}
+		return response;
+
+	}
+
+	
+	
+	
+	@PostMapping(path = "/updateEmployee", 
+			consumes = { MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE },
+			produces = { MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE })
+	public EmployeeResponse EmployeeResponse(@RequestBody EmployeeInfoBean employeeInfoBean) {
+		boolean isUpdated =  service.updateEmployee(employeeInfoBean);
+		if(isUpdated) {
+			response.setStatusCode(201);
+			response.setMessage("Success");
+			response.setDescription("User Updated SucessFully");
+		}else {
+			response.setStatusCode(401);
+			response.setMessage("Success");
+			response.setDescription("Unable to Update Employee");
+		}
+		return response;
+	}
+	
+	
+	@GetMapping(path = "/getAll",
+			produces = {MediaType.APPLICATION_JSON_VALUE,MediaType.APPLICATION_XML_VALUE})
+	public List<EmployeeInfoBean> getAllEmployee() {
+		return service.getAllEmployees();
+	}
+}

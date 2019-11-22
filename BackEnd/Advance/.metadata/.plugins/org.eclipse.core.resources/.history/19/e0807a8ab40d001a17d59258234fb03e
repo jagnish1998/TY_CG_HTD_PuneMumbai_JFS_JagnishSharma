@@ -1,0 +1,10 @@
+package com.capgemini.springcore.beans;
+
+import java.util.List;
+
+public class Medicine {
+	private String name;
+	private String type;
+	private double price;
+	private List<String> drugsContains;
+}

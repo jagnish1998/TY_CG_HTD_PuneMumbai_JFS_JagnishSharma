@@ -1,0 +1,24 @@
+package com.capgemini.medicalcollection.controller;
+
+import java.util.Scanner;
+
+import com.capgemini.medicalcollection.bean.UserBean;
+import com.capgemini.medicalcollection.dao.UserDAO;
+import com.capgemini.medicalcollection.factory.MedicineFactory;
+
+public class RemoveUser {
+	public void removeUser(UserBean userBean) {
+		new Viewuser().viewUser();
+		System.out.println("Enter user Id want to delete");
+		Scanner scan = new Scanner(System.in);
+		int uid = Integer.parseInt(scan.nextLine());
+		UserDAO dao = MedicineFactory.getUserDAO();
+		boolean isDeleted = dao.removeUser(uid);
+		if(isDeleted) {
+			System.out.println("User Deleted SuccessFully");
+			new AdminIndex().adminIndex(userBean);
+		}else {
+			System.out.println("Enter Valid UserId");
+		}
+	}
+}

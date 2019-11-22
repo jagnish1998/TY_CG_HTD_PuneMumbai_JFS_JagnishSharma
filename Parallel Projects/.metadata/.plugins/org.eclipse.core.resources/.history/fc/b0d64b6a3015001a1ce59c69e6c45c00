@@ -1,0 +1,29 @@
+package com.capgemini.medicalhibernate.dao;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+import com.capgemini.medicalhibernate.bean.UserBean;
+
+public class UserDAOImpli implements UserDAO {
+
+	EntityManagerFactory entityManagerFactory = null;
+	EntityManager entityManager = null;
+
+	@Override
+	public UserBean loginUser(String email, String password) {
+		try {
+			entityManagerFactory = Persistence.createEntityManagerFactory("Test");
+			entityManager = entityManagerFactory.createEntityManager();
+			String jpql = "* from UserBean where userEmail = :email and userPassword = :password";
+			Query query = entityManager.createQuery(jpql);
+			UserBean bean = (UserBean)query.getSingleResult();
+			return bean;
+		} catch (Exception e) {
+			return null;
+		}
+
+	}
+}

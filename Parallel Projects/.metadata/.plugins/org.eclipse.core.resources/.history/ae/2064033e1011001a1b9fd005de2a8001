@@ -1,0 +1,14 @@
+package com.capgemini.medicalcollection.database;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+import com.capgemini.medicalcollection.bean.UserBean;
+
+public class UserDataBase {
+	Set<UserBean> userBeans = new LinkedHashSet<UserBean>();
+	
+	static{
+		
+	}
+}

@@ -1,0 +1,11 @@
+package com.capgemini.springmvc.controller;
+
+import org.springframework.web.bind.annotation.GetMapping;
+
+public class RequestDeligationController {
+	
+	@GetMapping("/redirect")
+	public String redirectRequest() {
+		return "redirect:http://www.google.com";
+	}
+}

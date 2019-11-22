@@ -1,0 +1,11 @@
+package com.capgemini.medicalhibernate.controller;
+
+import com.capgemini.medicalhibernate.bean.UserBean;
+
+public class ChangePassword {
+
+	public void changePassword(UserBean bean) {
+		
+	}
+
+}

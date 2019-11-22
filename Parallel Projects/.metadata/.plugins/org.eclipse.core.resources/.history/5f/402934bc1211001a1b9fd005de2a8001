@@ -1,0 +1,39 @@
+package com.capgemini.medicalcollection.factory;
+
+import com.capgemini.medicalcollection.dao.UserDAO;
+import com.capgemini.medicalcollection.dao.UserDAOImpli;
+
+public class MedicineFactory {
+
+	private MedicineFactory() {
+	}
+
+	public static UserDAO getUserDAO() {
+		return new UserDAOImpli();
+	}
+
+	public static MedicineDAO getMedicineDAO() {
+		return new MedicineDAOImpli();
+	}
+
+	public static MedicalValidation getMedicalValidation() {
+		return new MedicalValidation();
+	}
+
+	public static CartDAO getCartDAO() {
+		return new CartDAOImpli();
+	}
+
+	public static OrderDAO getOrderDao() {
+		return new OrderDAOImpli();
+	}
+	public static MessageDAO getMessageDAO() {
+		MessageDAO dao = new MessageDAOImpli();
+		return dao;
+	}
+
+	public static CartTableDAO getCartTableDAO() {
+		return new CartTableDAOImli();
+	}
+
+}

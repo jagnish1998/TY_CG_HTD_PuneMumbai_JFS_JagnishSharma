@@ -1,0 +1,11 @@
+package com.capgemini.medicalhibernate.dao;
+
+import com.capgemini.medicalhibernate.bean.UserBean;
+
+public interface UserDAO {
+
+	UserBean loginUser(String email, String password);
+
+	boolean registerUser(String userName, String email, String password);
+
+}

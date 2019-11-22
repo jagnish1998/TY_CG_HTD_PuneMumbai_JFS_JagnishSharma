@@ -1,0 +1,14 @@
+package com.capgemini.medicalspringrest.dao;
+
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class OrderDAOImpli implements OrderDAO{
+
+	@PersistenceUnit
+	private EntityManagerFactory emf;
+
+}

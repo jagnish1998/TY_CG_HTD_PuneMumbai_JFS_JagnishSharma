@@ -1,0 +1,19 @@
+package com.capgemini.springmvc.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class CookieController {
+	
+	@GetMapping("/cookiePage")
+	public String displayCookiePage() {
+		
+		return "cookiePage";
+	}
+	
+	@GetMapping("/createCookie")
+	public String createCookie() {
+		
+	}
+}

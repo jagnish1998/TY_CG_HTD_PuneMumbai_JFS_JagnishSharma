@@ -1,0 +1,10 @@
+package com.capgemini.medicalhibernate.controller;
+
+public class ViewMedicine {
+
+	public void viewMedicine() {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

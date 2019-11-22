@@ -1,0 +1,8 @@
+package com.capgemini.medicalcollection.database;
+
+public class UserDataBase {
+	
+	Static{
+		
+	}
+}

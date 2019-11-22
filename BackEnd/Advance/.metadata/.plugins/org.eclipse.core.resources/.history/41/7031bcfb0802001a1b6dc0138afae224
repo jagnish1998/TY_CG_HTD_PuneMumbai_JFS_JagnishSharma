@@ -1,0 +1,10 @@
+package com.capgemini.employeewebapp.servlets;
+
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+
+@WebServlet("/redirect")
+public class RedirectServlet extends HttpServlet {
+	
+
+}

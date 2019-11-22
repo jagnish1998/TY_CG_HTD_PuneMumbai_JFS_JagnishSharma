@@ -1,0 +1,18 @@
+package com.capgemini.medicalhibernate.controller;
+
+import java.util.List;
+
+import com.capgemini.medicalhibernate.bean.CartBean;
+import com.capgemini.medicalhibernate.bean.UserBean;
+import com.capgemini.medicalhibernate.dao.CartDAO;
+import com.capgemini.medicalhibernate.factory.MedicineFactory;
+
+public class ViewCart {
+
+	public void options(UserBean bean) {
+		CartDAO dao = MedicineFactory.getCartDAO();
+		double price = 0;
+		List<CartBean> list = dao.getAll(bean.getUserId());
+		
+	}
+}

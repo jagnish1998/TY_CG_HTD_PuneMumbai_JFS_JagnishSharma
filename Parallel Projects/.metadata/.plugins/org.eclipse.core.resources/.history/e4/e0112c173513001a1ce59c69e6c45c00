@@ -1,0 +1,13 @@
+package com.capgemini.medicalcollection.database;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+import com.capgemini.medicalcollection.bean.CartBean;
+
+public class CartDatabase {
+	
+	private static Set<CartBean> cartList = new LinkedHashSet<CartBean>();
+	
+	
+}

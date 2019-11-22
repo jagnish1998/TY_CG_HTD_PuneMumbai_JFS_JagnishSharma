@@ -1,0 +1,15 @@
+package com.capgemini.medicalhibernate.dao;
+
+import java.util.List;
+
+import com.capgemini.medicalhibernate.bean.MedicineBean;
+
+public interface MedicineDAO {
+
+	public List<MedicineBean> getMedicine();
+
+	public boolean addMedicine(MedicineBean medBean);
+
+	public boolean removeMedicine(int mCode);
+
+}

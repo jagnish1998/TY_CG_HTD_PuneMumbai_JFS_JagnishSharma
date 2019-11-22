@@ -1,0 +1,13 @@
+package com.capgemini.medicalspringrest.service;
+
+import java.util.List;
+
+import com.capgemini.medicalspringrest.bean.OrderBean;
+
+public interface OrderService {
+
+	boolean addOrder(OrderBean orderBean);
+
+	List<OrderBean> getOrder(int uid);
+
+}

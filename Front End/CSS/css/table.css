@@ -1,0 +1,35 @@
+table,th,td
+{
+  /* border:1px solid black; */
+  /* border-collapse: collapse; */
+  margin-top: 100px;
+  margin-left: 350px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 20px;
+  box-shadow:0 0 15px deepskyblue;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+table
+{
+    width: 600px;
+}
+th
+{
+    background-color: blue;
+}
+tr:nth-child(even)
+{
+    background-color: burlywood;;
+}
+tr:nth-child(odd)
+{
+    background-color: darkgrey;
+}
+td:hover
+{
+    background-color: fuchsia;
+    color: gold;
+    cursor: pointer;
+}

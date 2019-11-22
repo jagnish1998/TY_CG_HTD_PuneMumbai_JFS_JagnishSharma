@@ -1,0 +1,12 @@
+package com.capgemini.medicalspringrest.service;
+
+import org.springframework.stereotype.Service;
+
+import com.capgemini.medicalspringrest.bean.UserBean;
+
+@Service
+public interface UserService {
+
+	UserBean getUser(int userId);
+	
+}

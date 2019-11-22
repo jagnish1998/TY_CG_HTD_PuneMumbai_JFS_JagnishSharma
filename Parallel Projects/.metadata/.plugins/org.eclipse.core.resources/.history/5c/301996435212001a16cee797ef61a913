@@ -1,0 +1,33 @@
+package com.capgemini.medicalcollection.database;
+
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+import com.capgemini.medicalcollection.bean.MedicineBean;
+
+public class MedicineDb {
+
+	static Set<MedicineBean> mal = new LinkedHashSet()<MedicineBean>;
+	
+	static {
+		
+		MedicineBean m1 = new MedicineBean(201,"Crocine",200,"Allopathic");
+		MedicineBean m2 = new MedicineBean();
+		m2.setMedicine_code(202);
+		m2.setMedicine_name("Paracetamol");
+		m2.setPrice(250);
+		m2.setProduct_category("Allopathic");
+		
+		mal.add(m1);
+		mal.add(m2);
+
+	}
+
+	public ArrayList<MedicineBean> medDB() {
+
+		return mal;
+
+	}
+
+}

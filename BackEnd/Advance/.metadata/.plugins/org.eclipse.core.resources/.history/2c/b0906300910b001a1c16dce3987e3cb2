@@ -1,0 +1,17 @@
+package com.capgemini.springrest.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+import com.capgemini.springrest.service.EmployeeService;
+
+@Controller
+public class EmployeeRestController {
+
+	@Autowired
+	private EmployeeService service;
+
+	public void getAllEmployees() {
+		
+	}
+}

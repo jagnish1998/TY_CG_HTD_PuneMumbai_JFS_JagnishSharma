@@ -1,0 +1,8 @@
+package com.capgemini.medicalspringrest.bean;
+
+public class MedicineBean {
+	private int medId;
+	private String medName;
+	private double medPrice;
+	private String medCategory;
+}

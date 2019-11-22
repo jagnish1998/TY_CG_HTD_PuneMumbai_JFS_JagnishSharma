@@ -1,0 +1,199 @@
+package com.capgemini.springmvc.controller;
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.capgemini.springmvc.bean.EmployeeInfoBean;
+import com.capgemini.springmvc.service.EmployeeService;
+
+@Controller
+public class EmployeeController {
+
+	@Autowired
+	private EmployeeService service;
+
+	@GetMapping("/empLoginForm")
+	public String diaplayempLoginForm() {
+		return "empLoginForm";
+	}// End of displayLoginForm
+
+	@PostMapping("/empLogin")
+	public String empLogin(int empId, String pass, ModelMap map, HttpServletRequest req) {
+
+		EmployeeInfoBean bean = service.authenticate(empId, pass);
+		if (bean != null) {
+			// Valid Credentials
+			HttpSession session = req.getSession(true);
+			session.setAttribute("empInfo", bean);
+			return "empHomePage";
+		} else {
+			map.addAttribute("msg", "Invalid UsernamePassword");
+			return "empLoginForm";
+		}
+	}// End of EmpLogin
+
+	@GetMapping("/addEmployeeForm")
+	public String displayAddEmployeeForm(HttpSession session, ModelMap map) {
+		if (session.isNew()) {
+			map.addAttribute("msg", "Please Login First");
+			return "empLoginForm";
+		} else {
+			return "addEmployeeForm";
+		}
+	}
+
+	@PostMapping("addEmployee")
+	public String addEmployee(ModelMap map, EmployeeInfoBean employeeInfoBean, HttpSession session) {
+		if (session.isNew()) {
+			map.addAttribute("msg", "Please Login First");
+			return "empLoginForm";
+		} else {
+			if (service.addEmployee(employeeInfoBean)) {
+				map.addAttribute("msg", "Employee Added sucessFully");
+			} else {
+				map.addAttribute("msg", "Unable to add Employee");
+			}
+			return "addEmployeeForm";
+		}
+	}
+
+	@GetMapping("/logout")
+	public String logout(HttpSession session, ModelMap map) {
+		session.invalidate();
+		map.addAttribute("msg", "Logout Successfully");
+		return "empLoginForm";
+	}
+
+	@GetMapping("/updateEmployeeForm")
+	public String displayUpdateForm(HttpSession session, ModelMap map) {
+		if (session.isNew()) {
+			map.addAttribute("msg", "Login First");
+			return "empLoginForm";
+		} else {
+			return "updateEmployeeForm";
+		}
+	}
+	
+	@PostMapping("/updateEmployee")
+	public String updateEmployee(EmployeeInfoBean employeeInfoBean,HttpSession session,ModelMap map) {
+		
+		if(session.isNew()) {
+			map.addAttribute("msg", "Login First");
+			return "empLoginForm";
+		}
+		else {
+			if(service.updateEmployee(employeeInfoBean)) {
+				map.addAttribute("msg", "Employee Details updated sucessFully");
+			}else {
+				map.addAttribute("msg","Unable to update Employee");
+			}
+			return "updateEmployeeForm";
+		}
+	}
+	
+	@GetMapping("/searchEmployeeForm")
+	public String displaySearchEmployeeForm(HttpSession session, ModelMap modelMap) {
+		if (session.isNew()) {
+			// Invalid Session
+			modelMap.addAttribute("msg", "Please Login First");
+			return "empLoginForm";
+		
+		} else {
+			// Valid Session
+			return "searchEmployeeForm";
+		}
+	}// End of displaySearchEmployeeForm()
+	
+	@GetMapping("/searchEmployee")
+	public String searchEmployee(int empId, HttpSession session, ModelMap modelMap) {
+		if (session.isNew()) {
+			// Invalid Session
+			modelMap.addAttribute("msg", "Please Login First");
+			return "empLoginForm";
+		
+		} else {
+			EmployeeInfoBean employeeInfoBean = service.getEmployoee(empId);
+			if (employeeInfoBean != null) {
+				modelMap.addAttribute("employeeInfoBean", employeeInfoBean);
+			} else {
+				modelMap.addAttribute("msg", "Employee ID " + empId + " Not Found!!!");
+			}
+			
+			return "searchEmployeeForm";
+		}
+	}// End of searchEmployee()
+	
+	@GetMapping("/deleteEmployeeForm")
+	public String displayDeleteEmployeeForm(HttpSession session, ModelMap modelMap) {
+		if (session.isNew()) {
+			// Invalid Session
+			modelMap.addAttribute("msg", "Please Login First");
+			return "empLoginForm";
+		
+		} else {
+			// Valid Session
+			return "deleteEmployeeForm";
+		}
+	}// End of displaySearchEmployeeForm()
+	
+	@GetMapping("/deleteEmployee")
+	public String deleteEmployee(int empId, HttpSession session, ModelMap modelMap) {
+		if (session.isNew()) {
+			// Invalid Session
+			modelMap.addAttribute("msg", "Please Login First");
+			return "empLoginForm";
+		
+		} else {
+			// Valid Session
+			if(service.deleteEmployee(empId)) {
+				modelMap.addAttribute("msg", "Employee Deleted Successfully!");
+			} else {
+				modelMap.addAttribute("msg", "Employee ID " + empId + " Not Found!");
+			}
+			
+			return "deleteEmployeeForm";
+		}
+	}// End of searchEmployee()
+	
+	@GetMapping("/seeAllEmployees")
+	public String getAllEmployees(HttpSession session, ModelMap modelMap) {
+		
+		if (session.isNew()) {
+			// Invalid Session
+			modelMap.addAttribute("msg", "Please Login First");
+			return "empLoginForm";
+		
+		} else {
+			// Valid Session
+			List<EmployeeInfoBean> employeesList = service.getAllEmployees();
+			modelMap.addAttribute("employeesList", employeesList);
+			
+			return "displayAllEmployees";
+		}
+	}// End of getAllEmployees()
+	
+	@GetMapping("/home")
+	public String displayEmpHomePage(HttpSession session, ModelMap modelMap) {
+
+		if (session.isNew()) {
+			// Invalid Session
+			modelMap.addAttribute("msg", "Please Login First");
+			return "empLoginForm";
+		
+		} else {
+			// Valid Session
+			return "empHomePage";
+		}
+	}// End of displayEmpHomePage()
+
+}// End of Controller
+
+}// End of Controller class

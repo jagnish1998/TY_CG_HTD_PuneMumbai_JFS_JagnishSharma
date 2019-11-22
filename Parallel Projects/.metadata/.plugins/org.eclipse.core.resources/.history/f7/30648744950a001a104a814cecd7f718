@@ -1,0 +1,7 @@
+package com.capgemini.medicalhibernate.bean;
+
+public class ViewCart {
+	private int cartId;
+	private double price;
+	private String medName;
+}

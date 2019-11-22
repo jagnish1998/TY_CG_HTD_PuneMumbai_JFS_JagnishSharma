@@ -1,0 +1,12 @@
+package com.capgemini.medicalcollection.controller;
+
+import java.util.Scanner;
+
+import com.capgemini.medicalcollection.bean.UserBean;
+
+public class AddToCart {
+	public void addTOCart(UserBean userBean) {
+		Scanner scan = new Scanner(System.in);
+		
+	}
+}

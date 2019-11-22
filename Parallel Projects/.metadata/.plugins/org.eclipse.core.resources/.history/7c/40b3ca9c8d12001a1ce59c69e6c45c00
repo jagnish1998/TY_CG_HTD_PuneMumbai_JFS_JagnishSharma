@@ -1,0 +1,10 @@
+package com.capgemini.medicalcollection.controller;
+
+import com.capgemini.medicalcollection.bean.UserBean;
+
+public class UpdatePrice {
+	public void updatePrice(UserBean userBean) {
+		
+		new AdminIndex().adminIndex(userBean);
+	}
+}

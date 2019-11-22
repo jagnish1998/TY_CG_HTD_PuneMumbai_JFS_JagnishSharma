@@ -1,0 +1,12 @@
+package com.capgemini.springcore;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class MedicineTest {
+	public static void main(String[] args) {
+		ApplicationContext context = new ClassPathXmlApplicationContext("medicineConfig.xml");
+		context.getBean("medicine",MedicineTest.class);
+		
+	}//End of main
+}//End of Class

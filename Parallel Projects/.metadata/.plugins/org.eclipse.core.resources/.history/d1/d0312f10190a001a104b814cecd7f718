@@ -1,0 +1,101 @@
+package com.capgemini.medicalhibernate.controller;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.capgemini.medicalhibernate.bean.MessageBean;
+import com.capgemini.medicalhibernate.bean.UserBean;
+import com.capgemini.medicalhibernate.dao.MessageDAO;
+import com.capgemini.medicalhibernate.factory.MedicineFactory;
+
+public class MessageController {
+
+	MessageDAO dao = MedicineFactory.getMessageDAO();
+	Scanner scan = new Scanner(System.in);
+	int choice;
+
+	public void usermessage(UserBean userBean) {
+		System.out.println("Enter your choice");
+		System.out.println("Press 1 to send message");
+		System.out.println("Press 2 to view response");
+
+		choice = Integer.parseInt(scan.nextLine());
+		int uId = userBean.getUserId();
+		switch (choice) {
+
+		case 1:
+			String type = "Question";
+			System.out.println("Enter message to be send");
+			String message = scan.nextLine();
+			 dao.sendMessage(message, uId, type);
+			/*
+			 * if (isSent) { System.out.println("Message sent.."); } else {
+			 * System.out.println("Something went wrong.."); new
+			 * MessageController().usermessage(userBean); }
+			 */	break;
+		case 2:
+
+			List<MessageBean> list = dao.viewResponse(uId);
+			if (list != null && !list.isEmpty()) {
+				for (MessageBean messageBean : list) {
+					System.out.println("Message Id: " + messageBean.getMsid());
+					System.out.println("Message: " + messageBean.getMessage());
+					System.out.println("-------------------------------------------");
+				}
+			} else {
+				System.out.println("No message to Show");
+				new MessageController().usermessage(userBean);
+			}
+			break;
+
+		default:
+			System.out.println("Enter Correct Choice");
+			new MessageController().usermessage(userBean);
+			break;
+		}
+		new UserIndex().choice(userBean);
+	}
+
+	public void adminmessage(UserBean userBean) {
+		System.out.println("Enter your choice");
+		System.out.println("Press 1 to view messages");
+		System.out.println("Press 2 to send response");
+
+		choice = scan.nextInt();
+		switch (choice) {
+		case 1:
+			List<MessageBean> list = dao.viewMessage();
+			if (list != null && !list.isEmpty()) {
+				for (MessageBean messageBean : list) {
+					System.out.println("Message Id: " + messageBean.getMsid());
+					System.out.println("Message: " + messageBean.getMessage());
+					System.out.println("User Id: " + messageBean.getUid());
+					System.out.println("-------------------------------------------");
+				}
+			} else {
+				System.out.println("No Message To Display");
+				new MessageController().adminmessage(userBean);
+			}
+
+			break;
+		case 2:
+			String type = "Response";
+			System.out.println("Enter response to be send");
+			String message = scan.nextLine();
+			System.out.println("Enter user Id");
+			int uId = scan.nextInt();
+			boolean isSent = dao.sendResponse(message, type, uId);
+			if (isSent) {
+				System.out.println("Response sent successfully..");
+			} else {
+				System.out.println("Something wents wrong..");
+				new MessageController().adminmessage(userBean);
+			}
+			break;
+		default:
+			break;
+		}
+		new AdminIndex().choice(userBean);
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.capgemini.medicalcollection.controller;
+
+public class UpdatePrice {
+
+}

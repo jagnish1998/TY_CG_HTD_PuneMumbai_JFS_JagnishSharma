@@ -1,0 +1,13 @@
+package com.capgemini.medicalcollection.database;
+
+import java.util.ArrayList;
+
+import com.capgemini.medicalcollection.bean.MedicineBean;
+
+public class MessageDatabase {
+
+	ArrayList<MedicineBean> msgList = new ArrayList<MedicineBean>();
+	static {
+		
+	}
+}

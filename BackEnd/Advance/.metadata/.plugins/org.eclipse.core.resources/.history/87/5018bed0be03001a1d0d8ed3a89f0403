@@ -1,0 +1,44 @@
+package com.capgemini.employeewebapp.servlets;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.capgemini.employeewebaap.dao.EmployeeDAO;
+import com.capgemini.employeewebaap.dao.EmployeeInfojpaImpl;
+import com.capgemini.employeewebapp.beans.EmployeeInfoBean;
+
+@WebServlet("/searchEmployee")
+public class SearchEmployeeServlet extends HttpServlet {
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int empIdVal = Integer.parseInt(req.getParameter("empId"));
+
+		EmployeeDAO dao = new EmployeeInfojpaImpl();
+		EmployeeInfoBean employeeInfoBean = dao.getEmployee(empIdVal);
+
+		resp.setContentType("text/html");
+		PrintWriter out = resp.getWriter();
+
+		out.println("<html>");
+		out.println("<body>");
+		if (employeeInfoBean != null) {
+			out.println("<h2> Employee Id: " + empIdVal + "Found<h2>");
+			out.println("<h2> Employee Name: " + employeeInfoBean.getEmpname() + "Found<h2>");
+			out.println("<h2> Employee Id: " + employeeInfoBean.getAge() + "Found<h2>");
+			out.println("<h2> Employee Id: " + employeeInfoBean.getDesignation() + "Found<h2>");
+			out.println("<h2> Employee Id: " + employeeInfoBean.getGender() + "Found<h2>");
+		} else {
+			out.println("<h3> style ='color: red>Employee Id Not Found</h3>");
+		}
+		out.println("</body>");
+		out.println("</html>");
+	}
+
+}

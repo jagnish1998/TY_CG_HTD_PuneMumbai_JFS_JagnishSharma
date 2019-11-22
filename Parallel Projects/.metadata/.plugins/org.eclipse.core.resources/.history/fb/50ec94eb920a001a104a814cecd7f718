@@ -1,0 +1,5 @@
+package com.capgemini.medicalhibernate.dao;
+
+public class CartDAOImpli implements CartDAO {
+
+}

@@ -1,0 +1,52 @@
+package com.capgemini.medicalhibernate.controller;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.capgemini.medicalhibernate.bean.CartBean;
+import com.capgemini.medicalhibernate.bean.UserBean;
+import com.capgemini.medicalhibernate.dao.CartDAO;
+import com.capgemini.medicalhibernate.factory.MedicineFactory;
+
+public class ViewCart {
+
+	public void options(UserBean bean) {
+		CartDAO dao = MedicineFactory.getCartDAO();
+		Scanner scan = new Scanner(System.in);
+		double price = 0;
+		List<CartBean> list = dao.getAll(bean.getUserId());
+		if (list != null && !list.isEmpty()) {
+			for (CartBean cartBean : list) {
+				System.out.println("Cart Id is " + cartBean.getCartId());
+				System.out.println("Med Name is " + cartBean.getMedName());
+				System.out.println("Med Price is " + cartBean.getPrice());
+				price = price + cartBean.getPrice();
+				System.out.println("----------------------------------------------------------------");
+			}
+			System.out.println("Your Bill is " + price);
+			System.out.println("Enter 1 to Continue to Shop");
+			System.out.println("Enter 2 to remove From cart");
+			System.out.println("Enter 3 to Place OrderDAO");
+
+			int choice = Integer.parseInt(scan.nextLine());
+			switch (choice) {
+			case 1:
+				new AddCart().addCart(bean);
+				break;
+			case 2:
+				new Removecart().removeMedicine(bean);
+				options(bean);
+				break;
+			case 3:
+				new PlaceOrder().placeOrder(price, bean);
+				break;
+			default:
+				System.out.println("Wrong Input Please Enter The correct Input");
+				new ViewCart().options(bean);
+			}
+		} else {
+			System.out.println("No Cart Item Present");
+			new UserIndex().choice(bean);
+		}
+	}
+}

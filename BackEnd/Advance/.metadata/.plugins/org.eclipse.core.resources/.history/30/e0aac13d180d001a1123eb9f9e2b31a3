@@ -1,0 +1,13 @@
+package com.capgemini.newspringboot.controller;
+
+public class Snippet {
+	public static void main(String[] args) {
+		<!-- https://mvnrepository.com/artifact/org.springframework/spring-orm -->
+				<dependency>
+					<groupId>org.springframework</groupId>
+					<artifactId>spring-orm</artifactId>
+					<version>5.1.5.RELEASE</version>
+				</dependency>
+	}
+}
+

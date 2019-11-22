@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- bean definitions here -->
+<bean id="mobileBean" class="com.capgemini.springcore.beans.Mobile" >
+	<property name="brandName" value="Real Me"></property>
+	<property name="modelName" value="2 pro"></property>
+	<property name="mobileDisplay" ref="mobileDisplay"></property>
+</bean>
+
+<bean id="mobileDisplay" class="com.capgemini.springcore.beans.MobileDisplayBean">
+<property name="size" value="6"/>
+<property name="displayResoulation" value="1200*800"></property>
+</bean>
+</beans>

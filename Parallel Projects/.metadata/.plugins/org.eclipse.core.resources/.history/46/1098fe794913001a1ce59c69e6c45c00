@@ -1,0 +1,19 @@
+package com.capgemini.medicalcollection.controller;
+
+import java.util.Scanner;
+
+import com.capgemini.medicalcollection.bean.UserBean;
+import com.capgemini.medicalcollection.dao.CartDAO;
+import com.capgemini.medicalcollection.dao.MedicineDAO;
+import com.capgemini.medicalcollection.factory.MedicineFactory;
+
+public class RemoveCart {
+	public void removeCart(UserBean bean) {
+		CartDAO cDao = MedicineFactory.getCartDAO();
+		MedicineDAO mDao = MedicineFactory.getMedicineDAO();
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter CartId ");
+		int cartId = Integer.parseInt(scan.nextLine());
+		
+	}
+}

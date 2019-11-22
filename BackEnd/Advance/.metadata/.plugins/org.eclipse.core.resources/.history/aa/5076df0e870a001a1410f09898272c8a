@@ -1,0 +1,31 @@
+package com.capgemini.springmvc.service;
+
+import com.capgemini.springmvc.bean.EmployeeInfoBean;
+
+public class EmployeeServiceImpl implements EmployeeService {
+
+	@Override
+	public EmployeeInfoBean getEmployee(int empId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public EmployeeInfoBean authenticate(int empId, String pwd) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean addEmployee(EmployeeInfoBean employeeInfoBean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean updateEmployee(EmployeeInfoBean employeeInfoBean) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

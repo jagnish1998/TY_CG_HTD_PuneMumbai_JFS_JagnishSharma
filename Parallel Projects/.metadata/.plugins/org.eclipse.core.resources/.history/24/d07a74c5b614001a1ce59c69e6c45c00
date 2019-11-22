@@ -1,0 +1,16 @@
+package com.capgemini.medicalcollection.database;
+
+import java.util.ArrayList;
+
+import com.capgemini.medicalcollection.bean.MedicineBean;
+import com.capgemini.medicalcollection.bean.MessageBean;
+
+public class MessageDatabase {
+
+	ArrayList<MedicineBean> msgList = new ArrayList<MedicineBean>();
+	static {
+		MessageBean m1 = new MessageBean(1001,102,"Any Discount", "Question");
+		MessageBean m2 = new MessageBean(1002,102,"Any Discount", "Question");
+		MessageBean m3 = new MessageBean(1003,101,"Sorry no Discount Is Availabe", "response");
+	}
+}

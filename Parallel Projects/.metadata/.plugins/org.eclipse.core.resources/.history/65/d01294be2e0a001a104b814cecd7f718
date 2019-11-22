@@ -1,0 +1,6 @@
+package com.capgemini.medicalspringrest.bean;
+
+public class ResponseBean {
+	
+	
+}

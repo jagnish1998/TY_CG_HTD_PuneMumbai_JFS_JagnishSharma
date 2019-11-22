@@ -1,0 +1,47 @@
+package com.capgemini.medicalhibernate.bean;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "message")
+public class MessageBean {
+	private int msid;
+	private int uid;
+	private String message;
+	private String Type;
+	
+	
+	
+	public int getUid() {
+		return uid;
+	}
+
+	public void setUid(int uid) {
+		this.uid = uid;
+	}
+
+	public String getType() {
+		return Type;
+	}
+
+	public void setType(String type) {
+		Type = type;
+	}
+
+	public int getMsid() {
+		return msid;
+	}
+
+	public void setMsid(int msid) {
+		this.msid = msid;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+}

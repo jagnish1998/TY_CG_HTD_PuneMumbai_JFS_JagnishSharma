@@ -1,0 +1,5 @@
+package com.capgemini.medicalhibernate.dao;
+
+public class UserDAOImpli implements UserDAO {
+
+}

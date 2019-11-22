@@ -1,0 +1,11 @@
+package com.capgemini.medicalhibernate.controller;
+
+import com.capgemini.medicalhibernate.bean.UserBean;
+
+public class AdminIndex {
+
+	public void choice(UserBean bean) {
+		System.out.println("Welcome TO AdminIndex");
+	}
+
+}

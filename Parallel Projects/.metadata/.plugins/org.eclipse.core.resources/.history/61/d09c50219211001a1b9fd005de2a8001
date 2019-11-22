@@ -1,0 +1,9 @@
+package com.capgemini.medicalcollection.controller;
+
+import com.capgemini.medicalcollection.bean.UserBean;
+
+public class Viewuser {
+	public viewUser() {
+		UserBean userBean = new UserBean();
+	}
+}

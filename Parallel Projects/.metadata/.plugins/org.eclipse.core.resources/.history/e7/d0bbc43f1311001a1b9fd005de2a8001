@@ -1,0 +1,21 @@
+package com.capgemini.medicalcollection.controller;
+
+import java.util.Scanner;
+
+import com.capgemini.medicalcollection.dao.UserDAO;
+import com.capgemini.medicalcollection.factory.MedicineFactory;
+
+public class UserController {
+
+	public void loginUser() {
+		UserDAO dao = MedicineFactory.getUserDAO();
+		System.out.println("---------------- Welocme To Login Page --------------------------");
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Enter email");
+		String email = scan.nextLine();
+		System.out.println("Enter password");
+		String password = scan.nextLine();
+		boolean isLogin = dao.login(email, password);
+	}
+
+}

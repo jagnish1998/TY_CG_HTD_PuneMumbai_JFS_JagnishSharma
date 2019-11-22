@@ -1,0 +1,24 @@
+package com.capgemini.springmvc.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.capgemini.springmvc.dao.EmployeeDAO;
+
+@Controller
+public class EmployeeController {
+
+	@GetMapping("/empLoginForm")
+	public String diaplayempLoginForm() {
+		return "empLoginForm";
+	}// End of displayLoginForm
+	
+	@PostMapping("/empLogin")
+	public String empLogin(int empId,String pass,ModelMap map) {
+	
+		
+	}//End of EmpLogin
+	
+}// Enf of Controller

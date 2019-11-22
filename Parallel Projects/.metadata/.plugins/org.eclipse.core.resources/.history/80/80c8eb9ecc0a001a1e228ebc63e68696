@@ -1,0 +1,26 @@
+package com.capgemini.medicalspringrest.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.capgemini.medicalspringrest.bean.UserBean;
+import com.capgemini.medicalspringrest.dao.UserDAO;
+
+@Service
+public class UserServiceImpli implements UserService {
+
+	@Autowired
+	private UserDAO userDAO;
+	
+	@Override
+	public UserBean getUser(int userId) {
+
+		return userDAO.getUser( userId);
+	}
+
+	@Override
+	public boolean addUser(UserBean bean) {
+		return userDAO.addUser(bean);
+	}
+
+}

@@ -1,0 +1,17 @@
+package com.capgemini.medicalspringrest.service;
+
+import org.springframework.stereotype.Service;
+
+import com.capgemini.medicalspringrest.bean.UserBean;
+
+@Service
+public class UserServiceImpli implements UserService {
+
+	
+	@Override
+	public UserBean getUser(int userId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

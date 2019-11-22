@@ -1,0 +1,11 @@
+package com.capgemini.newspringboot.controller;
+
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class SpringBootController {
+
+	public String welcomeMessage() {
+		return "Welcome to Spring Boot";
+	}// End of welcomeMessage
+}// End of Controller

@@ -1,0 +1,6 @@
+package com.capgemini.medicalspringrest.dao;
+
+public interface CartDAO {
+	
+	
+}

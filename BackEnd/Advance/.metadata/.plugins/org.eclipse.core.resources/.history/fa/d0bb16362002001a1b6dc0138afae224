@@ -1,0 +1,5 @@
+package com.capgemini.employeewebapp.servlets;
+
+public class CreateCookieServlet {
+
+}

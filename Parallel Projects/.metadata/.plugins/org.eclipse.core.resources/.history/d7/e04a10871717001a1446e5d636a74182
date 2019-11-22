@@ -1,0 +1,13 @@
+package com.capgemini.medicalspringrest.dao;
+
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class CartDAOImpli implements CartDAO{
+
+	@PersistenceUnit
+	private EntityManagerFactory emf;
+}

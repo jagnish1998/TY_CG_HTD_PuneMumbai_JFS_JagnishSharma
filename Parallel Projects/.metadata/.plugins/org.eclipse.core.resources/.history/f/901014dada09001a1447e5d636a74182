@@ -1,0 +1,5 @@
+package com.capgemini.medicalspringrest.bean;
+
+public class MessageBean {
+	
+}
