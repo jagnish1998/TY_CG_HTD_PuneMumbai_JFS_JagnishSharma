@@ -1,0 +1,59 @@
+package com.capgemini.medicalhibernate.controller;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.capgemini.medicalhibernate.bean.CartBean;
+import com.capgemini.medicalhibernate.bean.MedicineBean;
+import com.capgemini.medicalhibernate.bean.UserBean;
+import com.capgemini.medicalhibernate.dao.CartDAO;
+import com.capgemini.medicalhibernate.dao.MedicineDAO;
+import com.capgemini.medicalhibernate.factory.MedicineFactory;
+import com.capgemini.medicalhibernate.validation.MedicalValidation;
+
+public class AddCart {
+
+	public void addCart(UserBean bean) {
+		Scanner scan = new Scanner(System.in);
+		MedicalValidation validation = MedicineFactory.getMEdicalValidation();
+		MedicineDAO dao = MedicineFactory.getMedicineDAO();
+		System.out.println("Enter Medicine Id to Add to cart");
+		int mid = 0;
+		while (true) {
+			String ch = scan.nextLine();
+			if (validation.validateNo(ch)) {
+				mid = Integer.parseInt(ch);
+				break;
+			} else {
+				System.err.println("Enter Valid Input");
+				System.out.println("Enter Medicine ID ");
+			}
+		}
+		int isPresent = 0;
+		List<MedicineBean> list = dao.getMedicine();
+		for (MedicineBean medicineBean : list) {
+			if (mid == medicineBean.getmedicineCode()) {
+				isPresent++;
+				CartBean cart = new CartBean();
+				cart.setMid(mid);
+				cart.setUid(bean.getUserId());
+				cart.setMedName(medicineBean.getmedicineName());
+				cart.setPrice(medicineBean.getPrice());
+				CartDAO cartDAO = MedicineFactory.getCartDAO();
+				try {
+				if (cartDAO.addTOCart(cart)) {
+					System.out.println("Medicine Added Sucessfully");
+				} else {
+					System.out.println("Unable to add medicine");
+				}
+				break;
+			}catch (Exception e) {
+				// TODO: handle exception
+			}}
+		}
+		if (isPresent == 0) {
+			System.out.println("Invalid Medicine Id ");
+		}
+		new UserIndex().choice(bean);
+	}
+}

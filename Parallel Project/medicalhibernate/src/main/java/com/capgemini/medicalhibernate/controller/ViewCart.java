@@ -1,0 +1,70 @@
+package com.capgemini.medicalhibernate.controller;
+
+import java.util.List;
+import java.util.Scanner;
+
+import com.capgemini.medicalhibernate.bean.CartBean;
+import com.capgemini.medicalhibernate.bean.UserBean;
+import com.capgemini.medicalhibernate.dao.CartDAO;
+import com.capgemini.medicalhibernate.factory.MedicineFactory;
+import com.capgemini.medicalhibernate.validation.MedicalValidation;
+
+public class ViewCart {
+
+	public void options(UserBean bean) {
+		CartDAO dao = MedicineFactory.getCartDAO();
+		Scanner scan = new Scanner(System.in);
+		double price = 0;
+		MedicalValidation validation =  MedicineFactory.getMEdicalValidation();
+		
+		List<CartBean> list = null;
+		try {
+		list= dao.getAll(bean.getUserId());
+		}catch (Exception e) {
+			System.err.println(e.getMessage());
+			new UserIndex().choice(bean);
+		}
+		if (list != null && !list.isEmpty()) {
+			System.out.printf("%10s %20s %20s", "CartId", "Medicine Name", "MedicinePrice");
+			for (CartBean cartBean : list) {
+				System.out.println("\n------------------------------------------------------------------------");
+				System.out.println();
+				System.out.printf("%10s %20s %20f", cartBean.getCartId(), cartBean.getMedName(), cartBean.getPrice());
+				price = price + cartBean.getPrice();
+			}
+			System.out.println("\nYour Bill is " + price);
+			System.out.println("Enter 1 to Continue to Shop");
+			System.out.println("Enter 2 to remove From cart");
+			System.out.println("Enter 3 to Place OrderDAO");
+
+			int choice = 0;
+			while (true) {
+				String id = scan.nextLine();
+				if (validation.validateNo(id)) {
+					choice = Integer.parseInt(id);
+					break;
+				} else {
+					System.err.println("Enter Valid Input");
+					System.out.println("Enter your choice");
+				}
+			}
+			switch (choice) {
+			case 1:
+				new AddCart().addCart(bean);
+				break;
+			case 2:
+				new Removecart().removeMedicine(bean);
+				options(bean);
+				break;
+			case 3:
+				new PlaceOrder().placeOrder(price, bean,list);
+				break;
+			default:
+				System.out.println("Wrong Input Please Enter The correct Input");
+				new ViewCart().options(bean);
+			}
+		} else {
+			System.out.println("No Cart Item Present");
+			new UserIndex().choice(bean);
+		}
+	}}

@@ -1,0 +1,14 @@
+package com.capgemini.jdbcmedical.junit;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+class TestjdbcmedicalDAO {
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,89 @@
+package com.capgemini.medicalhibernate.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+import com.capgemini.medicalhibernate.bean.CartBean;
+import com.capgemini.medicalhibernate.exception.MedicalExeption;
+
+public class CartDAOImpli implements CartDAO {
+	EntityManagerFactory entityManagerFactory = null;
+	EntityManager entityManager = null;
+	EntityTransaction entityTransaction = null;
+
+	@Override
+	public boolean addTOCart(CartBean cart) {
+		boolean isAdded = false;
+		try {
+			entityManagerFactory = Persistence.createEntityManagerFactory("medical");
+			entityManager = entityManagerFactory.createEntityManager();
+			entityTransaction = entityManager.getTransaction();
+			entityTransaction.begin();
+			entityManager.persist(cart);
+			isAdded = true;
+			entityTransaction.commit();
+		} catch (Exception e) {
+			isAdded = false;
+			entityTransaction.rollback();
+			throw new MedicalExeption("Unable To Add tO Cart");
+		}
+		return isAdded;
+	}
+
+	@Override
+	public List<CartBean> getAll(int userId) {
+		try {
+			entityManagerFactory = Persistence.createEntityManagerFactory("medical");
+			entityManager = entityManagerFactory.createEntityManager();
+			String jpql = " from CartBean where uid = :userId";
+			Query query = entityManager.createQuery(jpql);
+			query.setParameter("userId", userId);
+			List<CartBean> bean = query.getResultList();
+			return bean;
+		} catch (Exception e) {
+			throw new MedicalExeption("No Item Present in Cart");
+		}
+	}
+
+	@Override
+	public boolean removecart(int cartId) {
+		boolean isDeleted = false;
+		try {
+			entityManagerFactory = Persistence.createEntityManagerFactory("medical");
+			entityManager = entityManagerFactory.createEntityManager();
+			entityTransaction = entityManager.getTransaction();
+			entityTransaction.begin();
+			CartBean cart = entityManager.find(CartBean.class, cartId);
+			entityManager.remove(cart);
+			isDeleted = true;
+			entityTransaction.commit();
+		} catch (Exception e) {
+			isDeleted = false;
+			entityTransaction.rollback();
+			throw new MedicalExeption("Invalid CartID");
+		}
+		return isDeleted;
+	}
+
+	@Override
+	public void removeAllcart(int userId) {
+		try {
+			entityManagerFactory = Persistence.createEntityManagerFactory("medical");
+			entityManager = entityManagerFactory.createEntityManager();
+			entityTransaction = entityManager.getTransaction();
+			entityTransaction.begin();
+			String jpql = "delete from CartBean where uid = :userId";
+			Query query = entityManager.createQuery(jpql);
+			query.setParameter("userId", userId);
+			query.executeUpdate();
+			entityTransaction.commit();
+		} catch (Exception e) {
+			entityTransaction.rollback();
+		}
+	}
+}

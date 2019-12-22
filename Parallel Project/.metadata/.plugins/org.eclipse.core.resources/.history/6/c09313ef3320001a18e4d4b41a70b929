@@ -1,0 +1,134 @@
+package com.capgemini.medicalhibernate.dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
+
+import com.capgemini.medicalhibernate.bean.UserBean;
+import com.capgemini.medicalhibernate.exception.medicalException;
+
+public class UserDAOImpli implements UserDAO {
+
+	EntityManagerFactory entityManagerFactory = null;
+	EntityManager entityManager = null;
+	EntityTransaction entityTransaction = null;
+
+	@Override
+	public UserBean loginUser(String email, String password) {
+		try {
+			entityManagerFactory = Persistence.createEntityManagerFactory("medical");
+			entityManager = entityManagerFactory.createEntityManager();
+			String jpql = " from UserBean where userEmail = :email and userPassword = :password";
+			Query query = entityManager.createQuery(jpql);
+			query.setParameter("email", email);
+			query.setParameter("password", password);
+			UserBean bean = (UserBean) query.getSingleResult();
+			return bean;
+		} catch (Exception e) {
+			throw new medicalException("Invalid Username and Password");
+		}
+	}
+
+	@Override
+	public boolean registerUser(String userName, String email, String password) {
+		boolean isAdded = false;
+		try {
+			entityManagerFactory = Persistence.createEntityManagerFactory("medical");
+			entityManager = entityManagerFactory.createEntityManager();
+			entityTransaction = entityManager.getTransaction();
+			entityTransaction.begin();
+			UserBean userBean = new UserBean();
+			userBean.setUserEmail(email);
+			userBean.setUserName(userName);
+			userBean.setUserPassword(password);
+			userBean.setUserType("user");
+			entityManager.persist(userBean);
+			entityTransaction.commit();
+			isAdded = true;
+		} catch (Exception e) {
+			throw new medicalException("Email Already Exixt");
+		}
+		return isAdded;
+	}
+
+	@Override
+	public boolean adminRegisterUser(String userName, String email, String password, String type) {
+		boolean isAdded = false;
+		try {
+			entityManagerFactory = Persistence.createEntityManagerFactory("medical");
+			entityManager = entityManagerFactory.createEntityManager();
+			entityTransaction = entityManager.getTransaction();
+			entityTransaction.begin();
+			UserBean userBean = new UserBean();
+			userBean.setUserEmail(email);
+			userBean.setUserName(userName);
+			userBean.setUserPassword(password);
+			userBean.setUserType(type);
+			entityManager.persist(userBean);
+			entityTransaction.commit();
+			isAdded = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			entityTransaction.rollback();
+			throw new medicalException("Email Already Exist");
+		}
+		return isAdded;
+	}
+
+	@Override
+	public List<UserBean> getuser() {
+		try {
+			entityManagerFactory = Persistence.createEntityManagerFactory("medical");
+			entityManager = entityManagerFactory.createEntityManager();
+			String jpql = " from UserBean ";
+			Query query = entityManager.createQuery(jpql);
+			List<UserBean> bean = query.getResultList();
+			return bean;
+		} catch (Exception e) {
+			throw new medicalException("No User Present");
+		}
+	}
+
+	@Override
+	public boolean removeUser(int uId) {
+		boolean isDeleted = false;
+		try {
+			entityManagerFactory = Persistence.createEntityManagerFactory("medical");
+			entityManager = entityManagerFactory.createEntityManager();
+			entityTransaction = entityManager.getTransaction();
+			entityTransaction.begin();
+			UserBean bean = entityManager.find(UserBean.class,uId);
+			entityManager.remove(bean);
+			entityTransaction.commit();
+			isDeleted = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			entityTransaction.rollback();
+		}
+		return isDeleted;
+	}
+
+	@Override
+	public boolean changePass(UserBean bean) {
+		boolean isChanged = false;
+		try {
+			entityManagerFactory = Persistence.createEntityManagerFactory("medical");
+			entityManager = entityManagerFactory.createEntityManager();
+			entityTransaction = entityManager.getTransaction();
+			entityTransaction.begin();
+			UserBean userBean = entityManager.find(UserBean.class,bean.getUserId());
+			userBean.setUserPassword(bean.getUserPassword());
+			entityManager.persist(userBean);
+			entityTransaction.commit();
+			isChanged = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			entityTransaction.rollback();
+		}
+		return isChanged;
+	}
+}

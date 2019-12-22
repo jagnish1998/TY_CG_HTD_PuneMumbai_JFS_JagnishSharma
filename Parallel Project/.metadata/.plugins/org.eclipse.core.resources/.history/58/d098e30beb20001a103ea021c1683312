@@ -1,0 +1,157 @@
+package com.capgemini.medicalhibernate.junit;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.capgemini.medicaljdbc.bean.CartBean;
+import com.capgemini.medicaljdbc.bean.MedicineBean;
+import com.capgemini.medicaljdbc.bean.UserBean;
+import com.capgemini.medicaljdbc.dao.CartDAO;
+import com.capgemini.medicaljdbc.dao.MedicineDAO;
+import com.capgemini.medicaljdbc.dao.MessageDAO;
+import com.capgemini.medicaljdbc.dao.UserDAO;
+import com.capgemini.medicaljdbc.exception.MedicalException;
+import com.capgemini.medicaljdbc.factory.MedicineFactory;
+
+
+class TestUserDAO {
+
+	private UserDAO dao = null;
+	private MessageDAO messageDAO = null;
+	private MedicineDAO mDao = MedicineFactory.getMedicineDAO();
+	private CartDAO cDao = MedicineFactory.getCartDAO();
+
+	@BeforeEach
+	void setObject() {
+		dao = MedicineFactory.getMedicalDAO();
+		messageDAO = MedicineFactory.getMessageDAO();
+	}
+
+	@Test
+	public void testremoveUser() {
+		boolean i = dao.removeUser(44);
+		assertEquals(true, i);
+	}
+
+	
+	@Test
+	public void testchangepassword() {
+		UserBean bean = new UserBean();
+		bean.setUserId(1);
+		bean.setUserPassword("jagnish");
+		
+		boolean i = dao.changePass(bean);
+		assertEquals(true, i);
+	}
+
+	@Test
+	public void testValidRegisterUser() {
+		boolean i = dao.registerUser("testcaseuser", "testCaseuser@gmail.com", "testcase");
+		assertEquals(true, i);
+	}
+
+	@Test
+	public void testValidRegisterAdmin() {
+		boolean i = dao.adminRegisterUser("testcaseadmin", "admin@123gmail.com", "testcaseuser", "admin");
+		assertEquals(true, i);
+	}
+
+	@Test
+	public void testInvalidLogin() {
+		assertThrows(MedicalException.class, () -> {
+			dao.loginUser("jagnish@gmail.com", "jagnis");
+		});
+	}
+
+	@Test
+	public void testValidLogin() {
+		UserBean userBean = dao.loginUser("jagnish@gmail.com", "jagnish");
+		int id = 1;
+		assertEquals(id, userBean.getUserId());
+	}
+
+	@Test
+	public void testUserRegister() {
+		assertThrows(MedicalException.class, () -> {
+			dao.registerUser("testcaseuser", "jagnish@gmail.com", "testcase");
+		});
+	}
+
+	@Test
+	public void testAdminRegister() {
+		assertThrows(MedicalException.class, () -> {
+			dao.registerUser("testcaseadmin", "jagnish@gmail.com", "testcase");
+		});
+	}
+
+	@Test
+	public void testRemoveUser() {
+		assertThrows(MedicalException.class, () -> {
+			dao.removeUser(43);
+		});
+	}
+
+	@Test
+	public void testSendMessage() {
+		boolean a = messageDAO.sendMessage("Hello", 2, "Question");
+		boolean e = true;
+		assertEquals(e, a);
+	}
+	
+	@Test
+	public void testSendResponse() {
+		boolean a  = messageDAO.sendResponse("Hiiii", "Response", 3);
+	}
+	
+	@Test
+	public void addMedTest() {
+		MedicineBean mb = new MedicineBean();
+		mb.setMedicineCode(801);
+		mb.setMedicineName("Ayush");
+		mb.setPrice(201.32);
+		mb.setProductCategory("Ayurvedic");
+		boolean i = mDao.addMedicine(mb);
+		assertEquals(true, i);
+	}
+	
+	@Test
+	public void changeNameTest() {
+		MedicineBean mb = new MedicineBean();
+		boolean i = mDao.updateMedicine(801, "Ayush-Heart");
+		assertEquals(true, i);
+	}
+	
+	@Test
+	public void changeCategoryTest() {
+		MedicineBean mb = new MedicineBean();
+		boolean i = mDao.updateMedicinedescription(801, "Allopathic");
+		assertEquals(true, i);
+	}
+	
+	@Test
+	public void changePriceTest() {
+		MedicineBean mb = new MedicineBean();
+		boolean i = mDao.updateMedicinePrice(801, 120.32);
+		assertEquals(true, i);
+	}
+	
+	@Test
+	public void addCartTest() {
+		CartBean cb = new CartBean();
+		cb.setUid(120);
+		cb.setMid(801);
+		cb.setMedName("Ayush-Heart");
+		cb.setPrice(120.32);
+		boolean i = cDao.addTOCart(cb);
+		assertEquals(true, i);
+	}
+	
+	@Test
+	public void removeCartTest() {
+		boolean i = cDao.removecart(210);
+		assertEquals(true, i);
+	}
+}

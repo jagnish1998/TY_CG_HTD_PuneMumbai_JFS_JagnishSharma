@@ -1,0 +1,50 @@
+package com.capgemini.medicalhibernate.junit;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.Rule;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.rules.ExpectedException;
+
+import com.capgemini.medicalhibernate.bean.UserBean;
+import com.capgemini.medicalhibernate.dao.UserDAO;
+import com.capgemini.medicalhibernate.exception.MedicalExeption;
+import com.capgemini.medicalhibernate.factory.MedicineFactory;
+
+import net.bytebuddy.asm.Advice.Thrown;
+
+class TestUserDAO {
+
+	private UserDAO dao = null;
+
+	@BeforeEach
+	void setObject() {
+		dao = MedicineFactory.getMedicalDAO();
+	}
+	
+	//valid Input
+	@Test
+	public void testremoveUser() {
+		boolean i  = dao.removeUser(43);
+		assertEquals(true, i);
+	}
+
+	//valid Input
+	@Test
+	public void testRegisterUser() {
+		boolean i = dao.registerUser("testcase", "testCase@gmail.com", "testcase");
+		assertEquals(true, i);
+	}
+	
+	
+	@Rule
+	public ExpectedException thrown = ExpectedException.none();
+	
+	@Test
+	public void testLogin()	{
+//		thrown.expect(MedicalExeption.class);
+//		thrown.expectMessage("Invalid Username and Password");
+		assertThrows(MedicalExeption.class, () ->{dao.loginUser("jagnish@gmail.com", "jagnis");});
+	}
+}

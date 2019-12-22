@@ -1,0 +1,21 @@
+package com.capgemini.medicalhibernate.junit;
+
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import com.capgemini.medicalhibernate.controller.Logout;
+
+class TestLogout {
+	private Logout logout = null;
+
+	@BeforeEach
+	public void createObject() {
+		logout = new Logout();
+	}
+	
+	@Test
+	public void logoutTest() {
+		
+	}
+}
